@@ -58,17 +58,38 @@ jobs:
           GAME_REVISION: 0
         run: make -j1
 
+      - name: Upload North America
+        uses: actions/upload-artifact@v4
+        with:
+          name: pmdsky-us-${{ github.run_id }}
+          path: build/pmdsky.us/pmdsky.us.nds
+          retention-days: 1
+
       - name: Build Europe
         env:
           GAME_LANGUAGE: EUROPE
           GAME_REVISION: 0
         run: make -j1
 
+      - name: Upload Europe
+        uses: actions/upload-artifact@v4
+        with:
+          name: pmdsky-eu-${{ github.run_id }}
+          path: build/pmdsky.eu/pmdsky.eu.nds
+          retention-days: 1
+
       - name: Build Japan
         env:
           GAME_LANGUAGE: JAPAN
           GAME_REVISION: 0
         run: make -j1
+
+      - name: Upload Japan
+        uses: actions/upload-artifact@v4
+        with:
+          name: pmdsky-jp-${{ github.run_id }}
+          path: build/pmdsky.jp/pmdsky.jp.nds
+          retention-days: 1
 
       - name: Webhook
         if: ${{ github.event_name == 'push' && env.CALCROM_WEBHOOK_URL != '' }}
