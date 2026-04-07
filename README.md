@@ -3,6 +3,7 @@
 You're probably looking for:
 
 https://github.com/EIGHTFINITE/pmd-sky/tree/main  
+https://github.com/EIGHTFINITE/pmd-sky/blob/main/.github/workflows/build.yml#L20-L35  
 https://github.com/EIGHTFINITE/pmd-sky/blob/main/INSTALL.md
 
 Or if you want to start coding:
