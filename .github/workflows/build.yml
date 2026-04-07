@@ -56,19 +56,19 @@ jobs:
         env:
           GAME_LANGUAGE: NORTH_AMERICA
           GAME_REVISION: 0
-        run: make -j${nproc}
+        run: make -j1
 
       - name: Build Europe
         env:
           GAME_LANGUAGE: EUROPE
           GAME_REVISION: 0
-        run: make -j${nproc}
+        run: make -j1
 
       - name: Build Japan
         env:
           GAME_LANGUAGE: JAPAN
           GAME_REVISION: 0
-        run: make -j${nproc}
+        run: make -j1
 
       - name: Webhook
         if: ${{ github.event_name == 'push' && env.CALCROM_WEBHOOK_URL != '' }}
