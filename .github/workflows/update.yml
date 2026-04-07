@@ -1,0 +1,47 @@
+name: "Update"
+
+on:
+  push:
+    branches: [ master ]
+  schedule:
+    - cron: '*/5 * * * *'
+
+permissions: write-all
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v6.0.2
+      with:
+        token: ${{ secrets.WORKFLOW_TOKEN }}
+        fetch-depth: 0
+    - name: Update
+      shell: bash
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
+      run: |
+        # Configure git to be more predictable and deterministic
+        git config core.autocrlf false
+        git config core.ignorecase false
+        git config core.fscache true
+        git config core.longpaths true
+        git config diff.renameLimit 0
+        git config status.renameLimit 0
+        git config merge.renameLimit 0
+        git config http.lowSpeedLimit 0
+        git config http.lowSpeedTime 300
+        git config http.postBuffer 1048576000
+        git config pack.threads 1
+        git config index.threads 0
+        git config set advice.mergeConflict false
+        git remote add pret https://github.com/pret/pmd-sky.git
+        git fetch -f --all -t
+        git for-each-ref --shell --format='git branch -rd %(refname:lstrip=2)' --exclude=refs/remotes/pret/main --exclude=refs/remotes/pret/workflows/assets --exclude=refs/remotes/pret/xmap refs/remotes/pret/ | bash --noprofile --norc -e -o pipefail
+        git for-each-ref --shell --format='git push -f -u origin %(refname):refs/heads/%(refname:lstrip=2)' --exclude=refs/remotes/origin/ refs/remotes/ | bash --noprofile --norc -e -o pipefail
+        git push -f --tags
+        git for-each-ref --shell --format='if git cat-file -e remotes/%(refname:lstrip=3)^{commit}; then echo Everything up-to-date; else git push -d origin refs/heads/%(refname:lstrip=3); fi' --exclude=refs/remotes/origin/HEAD --exclude=refs/remotes/origin/master --exclude=refs/remotes/origin/main --exclude=refs/remotes/origin/dependabot/ refs/remotes/origin/ | bash --noprofile --norc -e -o pipefail
+        git checkout -b main refs/remotes/origin/main
+        git -c user.name="8" -c user.email="ElGHT@users.noreply.github.com" rebase refs/remotes/pret/main
+        git push -f -u origin main:refs/heads/main
+        git push -f -u origin refs/remotes/pret/xmap:refs/heads/xmap
