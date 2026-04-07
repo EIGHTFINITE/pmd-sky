@@ -41,19 +41,19 @@ jobs:
         env:
           GAME_LANGUAGE: NORTH_AMERICA
           GAME_REVISION: 0
-        run: make -j${nproc} USE_WIBO=1 USE_METROSKREW=1
+        run: make -j1 USE_WIBO=1 USE_METROSKREW=1
 
       - name: Build Europe
         env:
           GAME_LANGUAGE: EUROPE
           GAME_REVISION: 0
-        run: make -j${nproc} USE_WIBO=1 USE_METROSKREW=1
+        run: make -j1 USE_WIBO=1 USE_METROSKREW=1
 
       - name: Build Japan
         env:
           GAME_LANGUAGE: JAPAN
           GAME_REVISION: 0
-        run: make -j${nproc} USE_WIBO=1 USE_METROSKREW=1
+        run: make -j1 USE_WIBO=1 USE_METROSKREW=1
 
       - name: Webhook
         if: ${{ github.event_name == 'push' && env.CALCROM_WEBHOOK_URL != '' }}
