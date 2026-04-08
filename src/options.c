@@ -17,16 +17,16 @@ void InitOptions() {
     volatile u8 unused;
 
     o->touch_screen = TOUCH_SCREEN_USE_ANYWHERE;
-    o->top_screen = TOP_SCREEN_CONTROLS;
-    o->bottom_screen = BOTTOM_SCREEN_CLEAR_MAP;
+    o->top_screen = TOP_SCREEN_MAP_AND_TEAM;
+    o->bottom_screen = BOTTOM_SCREEN_NO_MAP;
     o->grids = 1;
-    o->speed = SPEED_REGULAR;
-    o->far_off_pals = FAR_OFF_PALS_LOOK;
+    o->speed = SPEED_FAST;
+    o->far_off_pals = FAR_OFF_PALS_SELF;
     o->damage_turn = TRUE;
     o->d_pad_attack = FALSE;
     o->check_direction = FALSE;
     unused = 0;
-    o->frame_type = 0;
+    o->frame_type = 4;
 }
 
 void GetOptions(u8* dest_opts_ptr) {
