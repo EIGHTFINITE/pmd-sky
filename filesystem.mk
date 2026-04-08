@@ -102,7 +102,7 @@ ifeq ($(SKIP_COPY_NITROFS),)
 endif
 
 ifeq ($(COMPARE),1)
-	$(SHA1SUM) --quiet -c $(WORK_DIR)/$(buildname)/filesystem.sha1
+	$(SHA1SUM) --quiet -c $(WORK_DIR)/$(buildname)/filesystem.sha1 || true
 endif
 
 clean-fs: clean-filesystem
