@@ -8,8 +8,8 @@
 .public DungeonRandOutcomeUserAction
 .public DungeonRandOutcomeUserTargetInteraction
 .public EndFrozenStatus
-.public GetDamageSourceWrapper
 .public FlashFireShouldActivate
+.public GetDamageSourceWrapper
 .public GetMoveCategory
 .public GetMoveType
 .public LogMessageByIdWithPopupCheckUserTarget

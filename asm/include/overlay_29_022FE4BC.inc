@@ -5,7 +5,7 @@
 .public AiUseMove
 .public AnimationDelayOrSomething
 .public CanMonsterMoveInDirection
-.public CannotStandOnTile__023006C8
+.public CannotStandOnTile
 .public DIRECTIONS_XY
 .public DisplayActions
 .public DUNGEON_PTR

@@ -1,4 +1,5 @@
 #pragma once
+.public ActivateTerrainEffects
 .public DetermineAllMonsterShadow
 .public DetermineTileWalkableNeighbors
 .public DUNGEON_PTR
@@ -12,7 +13,6 @@
 .public IsFullFloorFixedRoom
 .public LogMessageByIdWithPopupCheckUser
 .public ov29_022EA370
-.public ov29_022F9C74
 .public ov29_02305814
 .public ov29_0233665C
 .public ov29_0233785C

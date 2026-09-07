@@ -37,7 +37,6 @@
 .public MemFree
 .public NeedsItemToSpawn
 .public ov10_022BDC68
-.public ov10_022BDE50
 .public ov10_022BEFD8
 .public ov10_022BF274
 .public ov10_022BF2B4
@@ -56,4 +55,5 @@
 .public PlayEffectAnimationEntity
 .public RandIntSafe
 .public SetMonsterId
+.public TerminateEffectWrapper
 .public UnloadFile

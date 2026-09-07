@@ -923,7 +923,7 @@ ov29_02348BA0: ; 0x02348BA0
 	movs r4, r0
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, r5, pc}
-	bl ov29_023009CC
+	bl CanBeTalkedTo
 	cmp r0, #0
 	beq _02348BD8
 	mov r0, r5

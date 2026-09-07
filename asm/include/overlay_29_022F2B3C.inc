@@ -7,9 +7,10 @@
 .public AddSimpleObjToOam
 .public AdvanceFrame
 .public BAG_ITEMS_PTR_MIRROR
+.public CanBeTalkedTo
 .public CanMonsterMoveInDirection
 .public CanMonsterMoveOrSwapWithAllyInDirection
-.public CannotStandOnTile__02300384
+.public CannotStandOnTileNoMonsterCheck
 .public ChangeMonsterAnimation
 .public CheckTeamItemsFlags
 .public DIRECTIONS_XY
@@ -36,6 +37,7 @@
 .public GetTileSafe
 .public GetTrapInfo
 .public GetTreatmentBetweenMonsters
+.public HandleShopTransaction
 .public HasHeldItem
 .public HiddenStairsTrigger
 .public IqSkillIsEnabled
@@ -55,14 +57,12 @@
 .public ov29_022E81F8
 .public ov29_022EB568
 .public ov29_022EB594
-.public ov29_022F62CC
 .public ov29_022F670C
 .public ov29_022F89AC
 .public ov29_022F9C34
 .public ov29_022F9EA0
 .public ov29_022FB920
 .public ov29_022FFA94
-.public ov29_023009CC
 .public ov29_02300FCC
 .public ov29_02321164
 .public ov29_02337D68

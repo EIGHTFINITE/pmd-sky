@@ -53,8 +53,8 @@ _022FF75C:
 	ldmia sp!, {r4, pc}
 	arm_func_end IsInvalidSpawnTile
 
-	arm_func_start ov29_022FF764
-ov29_022FF764: ; 0x022FF764
+	arm_func_start CannotMoveToTile
+CannotMoveToTile: ; 0x022FF764
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r1
 	mov r6, r0
@@ -171,4 +171,4 @@ _022FF888:
 _022FF890:
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end ov29_022FF764
+	arm_func_end CannotMoveToTile

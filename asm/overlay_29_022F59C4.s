@@ -77,7 +77,7 @@ ov29_022F5A40: ; 0x022F5A40
 	bl DisplayMessage2
 	b _022F5D94
 _022F5A70:
-	bl ov29_023009CC
+	bl CanBeTalkedTo
 	cmp r0, #0
 	bne _022F5A90
 #ifdef JAPAN
@@ -131,7 +131,7 @@ _022F5ADC:
 	mov r1, sl
 	bl TryEndPetrifiedOrSleepStatus
 	mov r0, sl
-	bl ov29_023009CC
+	bl CanBeTalkedTo
 	cmp r0, #0
 	beq _022F5B4C
 	mov r0, sl
@@ -716,8 +716,8 @@ _022F6208: .word DIRECTIONS_XY
 _022F620C: .word DIRECTIONS_XY + 2
 	arm_func_end UseRegularAttackOrStruggle
 
-	arm_func_start ov29_022F6210
-ov29_022F6210: ; 0x022F6210
+	arm_func_start GetShopkeeperIfTalkable
+GetShopkeeperIfTalkable: ; 0x022F6210
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r6, r0
 	bl EntityIsValid__022F62A8
@@ -745,7 +745,7 @@ _022F6234:
 	cmp r0, #1
 	bne _022F6288
 	mov r0, r5
-	bl ov29_023009CC
+	bl CanBeTalkedTo
 	cmp r0, #0
 	beq _022F6288
 	ldrb r1, [r6, #0x25]
@@ -764,4 +764,4 @@ _022F6294:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _022F62A4: .word DUNGEON_PTR
-	arm_func_end ov29_022F6210
+	arm_func_end GetShopkeeperIfTalkable

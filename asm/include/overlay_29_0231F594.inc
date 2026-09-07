@@ -14,12 +14,12 @@
 .public GetItemInfo
 .public GetTile
 .public GetTileSafe
+.public HandleShopTransaction
 .public IncrementEntityPixelPosXY
 .public IsWaterTileset
 .public LogMessageByIdWithPopupCheckUser
 .public MemAlloc
 .public MemFree
-.public ov29_022F62CC
 .public ov29_02336694
 .public PlaySeByIdIfShouldDisplayEntity
 .public RemoveGroundItem

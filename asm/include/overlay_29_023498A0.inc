@@ -1,6 +1,7 @@
 #pragma once
 .public AdvanceFrame
 .public BAG_ITEMS_PTR_MIRROR
+.public CanBeTalkedTo
 .public CanSeeTarget
 .public ChangeDungeonMusic
 .public DisplayMessage
@@ -47,7 +48,6 @@
 .public ov29_022E8244
 .public ov29_022EAEFC
 .public ov29_022FA3D4
-.public ov29_023009CC
 .public ov29_02344B9C
 .public ov29_02348888
 .public ov29_023491B8

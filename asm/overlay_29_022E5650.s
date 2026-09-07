@@ -76,8 +76,8 @@ _022E5710:
 	ldmia sp!, {r4, pc}
 	arm_func_end ov29_022E56F4
 
-	arm_func_start ov29_022E5728
-ov29_022E5728: ; 0x022E5728
+	arm_func_start PlayItemThrowSfx
+PlayItemThrowSfx: ; 0x022E5728
 	stmdb sp!, {r3, lr}
 	cmp r1, #0
 	bne _022E5740
@@ -98,7 +98,7 @@ _022E5754:
 _022E5760: .word 0x0000130E
 _022E5764: .word 0x0000130D
 _022E5768: .word 0x0000130C
-	arm_func_end ov29_022E5728
+	arm_func_end PlayItemThrowSfx
 
 	arm_func_start PlayMissSfx__022E611C
 PlayMissSfx__022E611C: ; 0x022E576C

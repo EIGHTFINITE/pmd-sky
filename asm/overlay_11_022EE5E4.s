@@ -7533,7 +7533,7 @@ _022F4400:
 	ldr r0, [r0, #0x328]
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
-	bl ov10_022BDE50
+	bl TerminateEffectWrapper
 _022F4430:
 	ldr r5, _022F447C ; =ov11_02324CE0
 	ldr r0, [r5, #4]
@@ -8164,7 +8164,7 @@ ov11_022F4BE4: ; 0x022F4BE4
 	cmpne r1, r0
 	beq _022F4C14
 	ldrsh r0, [r4, #0xa2]
-	bl ov10_022BDE50
+	bl TerminateEffectWrapper
 _022F4C14:
 	ldrh r0, [r4, #0x90]
 	tst r0, #0x4000
@@ -8812,7 +8812,7 @@ ov11_022F5460: ; 0x022F5460
 	cmp r1, r0
 	beq _022F54D4
 	ldrsh r0, [r5, #0xa2]
-	bl ov10_022BDE50
+	bl TerminateEffectWrapper
 	mvn r0, #0
 	strh r0, [r5, #0xa2]
 _022F54D4:

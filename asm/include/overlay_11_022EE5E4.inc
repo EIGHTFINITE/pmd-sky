@@ -48,7 +48,6 @@
 .public ov10_022BDA84
 .public ov10_022BDB80
 .public ov10_022BDC0C
-.public ov10_022BDE50
 .public ov10_022BF00C
 .public ov10_022BF274
 .public ov10_022BF2E4
@@ -296,5 +295,6 @@
 .public sub_0206B9DC
 .public sub_0206BA5C
 .public SwitchAnimationControlToNextFrame
+.public TerminateEffectWrapper
 .public UnlockRoutine
 .public WAN_TABLE

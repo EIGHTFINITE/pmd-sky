@@ -23,7 +23,6 @@
 .public IsChargingTwoTurnMove
 .public LogMessageQuiet
 .public LogMessageWithPopup
-.public ov10_022BDE50
 .public ov10_022BE9E8
 .public ov10_022BEB2C
 .public ov10_022BF01C
@@ -45,4 +44,5 @@
 .public ShouldDisplayEntityWrapper
 .public ShouldTreatMonsterAsAlly
 .public SinAbs4096
+.public TerminateEffectWrapper
 .public TwoTurnMoveForcedMiss

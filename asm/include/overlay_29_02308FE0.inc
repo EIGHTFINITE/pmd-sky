@@ -49,7 +49,6 @@
 .public MoveMonsterToPos
 .public MusicTableIdxToMusicId
 .public ov10_022BDC68
-.public ov10_022BDE50
 .public ov10_022BF964
 .public ov10_022C45C4
 .public ov10_022C45FC
@@ -107,6 +106,7 @@
 .public SubInitMonster
 .public SubstitutePlaceholderStringTags
 .public TalkToSecretBazaarNpcStandard
+.public TerminateEffectWrapper
 .public TryEndPetrifiedOrSleepStatus
 .public TryIncreaseHp
 .public TryRecruit

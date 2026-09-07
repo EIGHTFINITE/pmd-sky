@@ -481,7 +481,7 @@ _0231FBC0:
 	bl LogMessageByIdWithPopupCheckUser
 _0231FBCC:
 	mov r0, #1
-	bl ov29_022F62CC
+	bl HandleShopTransaction
 _0231FBD4:
 	mov r0, r4
 	bl MemFree

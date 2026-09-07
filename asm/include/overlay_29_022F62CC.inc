@@ -5,6 +5,8 @@
 .public AnimationDelayOrSomething
 .public BAG_ITEMS_PTR_MIRROR
 .public CalcSpeedStageWrapper
+.public CanBeTalkedTo
+.public CannotMoveToTile
 .public ChangeMonsterAnimationToIdle
 .public DeleteWanTableEntryVeneer
 .public DisplayMessage2
@@ -19,6 +21,7 @@
 .public GetLeader
 .public GetMoneyCarried
 .public GetMonsterIdFromSpawnEntry
+.public GetShopkeeperIfTalkable
 .public GetSpriteFileSize
 .public GetTile
 .public GetTileAtEntity
@@ -34,15 +37,12 @@
 .public LoadMonsterSprite
 .public LoadWanTableEntryFromPackUseProvidedMemory
 .public LogMessageByIdWithPopupCheckUser
+.public MakeMonsterIdleInDirectionIfValid
 .public MemAlloc
 .public MemFree
 .public MemZero
 .public ov10_022C473C
 .public ov10_022C4800
-.public ov29_022F6210
-.public ov29_022FF764
-.public ov29_023009CC
-.public ov29_02304A00
 .public ov29_0231B490
 .public ov29_0231B4AC
 .public ov29_02352760

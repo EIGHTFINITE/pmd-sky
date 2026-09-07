@@ -2021,7 +2021,7 @@ ov29_0230D7D4: ; 0x0230D7D4
 	cmp r3, r1
 	beq _0230D808
 	ldrsh r0, [r2]
-	bl ov10_022BDE50
+	bl TerminateEffectWrapper
 	ldr r0, _0230D870 ; =ov29_023535D4
 	mvn r1, #0
 	strh r1, [r0]
@@ -2051,7 +2051,7 @@ _0230D850:
 	cmp r0, #0
 	bne _0230D848
 	mov r0, r5
-	bl ov10_022BDE50
+	bl TerminateEffectWrapper
 _0230D868:
 	add sp, sp, #0x10
 	ldmia sp!, {r3, r4, r5, pc}

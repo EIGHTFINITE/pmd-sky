@@ -117,7 +117,7 @@ asm void ov30_023829CC(s32 arg0, s32 arg1, s8 arg2)
 	mov r4, r2
 	bl MemAlloc
 	ldr r1, =ov30_023860A4
-	ldr r3, =SAVE_CHECKSUM 
+	ldr r3, =SAVE_CHECKSUM
 	str r0, [r1]
 	str r6, [r0, #4]
 	ldr r0, [r1]
@@ -138,13 +138,13 @@ asm void ov30_023829CC(s32 arg0, s32 arg1, s8 arg2)
 extern const u8 OVERLAY30_JP_STRING_1[0xC]; // みさき様
 extern const u8 OVERLAY30_JP_STRING_2[0xC]; // やよい様
 
-s32 NoteSaveBase(s32);           
+s32 NoteSaveBase(s32);
 s32 WriteQuickSaveInfo(s32, s32);
-void sub_02003B94();             
-void sub_02003BC8();             
+void sub_02003B94();
+void sub_02003BC8();
 void sub_02029F88(s32, s32, s32);
-void sub_02029FBC();             
-s32 sub_02048DC4(s32);           
+void sub_02029FBC();
+s32 sub_02048DC4(s32);
 void sub_02034D0C(void);
 
 struct trap* GetTrapInfo(struct entity*);
@@ -152,11 +152,11 @@ void memset(void*, s32, s32);                                 /* extern */
 
 s32 ov30_02382A34(void)
 {
-    switch (ov30_023860A4->unk0) {                              
-        default:                                        
-        case 4:                                         
+    switch (ov30_023860A4->unk0) {
+        default:
+        case 4:
             break;
-        case 0:                                         
+        case 0:
             if (ov30_023860A4->unkC != 0) {
 #ifndef JAPAN
                 sub_02034EB4(0x408, 0x241, 0);
@@ -172,7 +172,7 @@ s32 ov30_02382A34(void)
             }
             ov30_023860A4->unk0 = 1;
             break;
-        case 1:                                         
+        case 1:
             if (sub_02034DA8() == 0) {
                 sub_02029F88(0xE0, 0x88, 1);
                 sub_02003B94();
@@ -182,7 +182,7 @@ s32 ov30_02382A34(void)
                 return 1;
             }
             break;
-        case 2:                                         
+        case 2:
             if (ov30_023860A4->unk10 == 0) {
                 ov30_023860A4->unk10 = NoteSaveBase(2);
                 if (ov30_023860A4->unk10 == 0) {
@@ -191,9 +191,9 @@ s32 ov30_02382A34(void)
             }
             sub_02003BC8();
             sub_02029FBC();
-            switch (ov30_023860A4->unk10) 
-            {                   
-                case 0:                                    
+            switch (ov30_023860A4->unk10)
+            {
+                case 0:
 #ifndef JAPAN
                     sub_02034EB4(0x41C, 0x244, 0);
 #else
@@ -201,7 +201,7 @@ s32 ov30_02382A34(void)
 #endif
                     ov30_023860A4->unk0 = 3;
                     break;
-                case 1:                                    
+                case 1:
 #ifndef JAPAN
                     sub_02034EB4(0x40C, 0x238, 0);
 #else
@@ -209,7 +209,7 @@ s32 ov30_02382A34(void)
 #endif
                     ov30_023860A4->unk0 = 4;
                     break;
-                default:                                   
+                default:
 #ifndef JAPAN
                     sub_02034EB4(0x41C, 0x239, 0);
 #else
@@ -219,12 +219,12 @@ s32 ov30_02382A34(void)
                     break;
             }
             break;
-        case 3:                                         
+        case 3:
             if (sub_02034DA8() == 0) {
                 ov30_023860A4->unk0 = 5;
             }
             break;
-        case 5:                                         
+        case 5:
             if (ov30_023860A4->unk10 == 0) {
                 return 2;
             } else {
@@ -243,23 +243,23 @@ void ov30_02382C30(void)
     }
 }
 
-void WriteQuicksaveData(void *buffer, s32 size) 
+void WriteQuicksaveData(void *buffer, s32 size)
 {
     struct DataSerializer sp4;
     s32 sp0;
     s32 index;
 
-    ov30_02385C3C(&sp4, buffer, size);
+    InitDataSerializerWriter(&sp4, buffer, size);
     sp0 = 0;
-    ov30_02385C54(&sp4, &sp0, 4);
+    WriteBitsToDataSerializer(&sp4, &sp0, 4);
     ov30_02385CE0(&sp4, OVERLAY30_JP_STRING_1);
-    ov30_02385C54(&sp4, &DUNGEON_PTR->id, 0xAC);
+    WriteBitsToDataSerializer(&sp4, &DUNGEON_PTR->id, 0xAC);
     ov30_02385CE0(&sp4, OVERLAY30_JP_STRING_1);
     ov30_02385D34(&sp4, DUNGEON_PTR->highest_enemy_level);
     for(index = 0; index < 0x10; index++)
     {
         ov30_02385D14(&sp4, DUNGEON_PTR->spawn_table_entries_chosen[index]);
-       
+
     }
     ov30_02383C70(&sp4);
     ov30_0238409C(&sp4);
@@ -269,7 +269,7 @@ void WriteQuicksaveData(void *buffer, s32 size)
     ov30_02382FB8(&sp4);
     ov30_02383084(&sp4);
     ov30_02385CE0(&sp4, OVERLAY30_JP_STRING_2);
-    FinishBitSerializer(&sp4);
+    FinishDataSerializer(&sp4);
 }
 
 void ov30_02382D80(void *buffer)
@@ -290,16 +290,16 @@ void ov30_02382D80(void *buffer)
         entity = DUNGEON_PTR->item_ptrs[index2];
         if ((entity != NULL) && (entity->type == ENTITY_ITEM)) {
             item = GetItemInfo(entity);
-            ov30_02385C54(buffer, &item->flags, 1);
-            ov30_02385C54(buffer, &item->held_by, 1);
-            ov30_02385C54(buffer, &item->quantity, 2);
-            ov30_02385C54(buffer, &item->id, 2);
-            ov30_02385C54(buffer, &entity->pos.x, 1);
-            ov30_02385C54(buffer, &entity->pos.y, 1);
+            WriteBitsToDataSerializer(buffer, &item->flags, 1);
+            WriteBitsToDataSerializer(buffer, &item->held_by, 1);
+            WriteBitsToDataSerializer(buffer, &item->quantity, 2);
+            WriteBitsToDataSerializer(buffer, &item->id, 2);
+            WriteBitsToDataSerializer(buffer, &entity->pos.x, 1);
+            WriteBitsToDataSerializer(buffer, &entity->pos.y, 1);
             valid_item = TRUE;
         }
         if (valid_item == FALSE) {
-            ov30_02385C54(buffer, zeros, 8);
+            WriteBitsToDataSerializer(buffer, zeros, 8);
         }
     }
 }
@@ -322,17 +322,17 @@ void ov30_02382E94(void *buffer)
         var_r1 = FALSE;
         if ((entity != NULL) && (entity->type == ENTITY_TRAP)) {
             trap = GetTrapInfo(entity);
-            ov30_02385C54(buffer, &trap->id, 1);
-            ov30_02385C54(buffer, &trap->team, 1);
-            ov30_02385C54(buffer, &trap->flags, 1);
-            ov30_02385C54(buffer, &trap->field_0x3, 1);
-            ov30_02385C54(buffer, &entity->is_visible, 1);
-            ov30_02385C54(buffer, &entity->pos.x, 1);
-            ov30_02385C54(buffer, &entity->pos.y, 1);
+            WriteBitsToDataSerializer(buffer, &trap->id, 1);
+            WriteBitsToDataSerializer(buffer, &trap->team, 1);
+            WriteBitsToDataSerializer(buffer, &trap->flags, 1);
+            WriteBitsToDataSerializer(buffer, &trap->field_0x3, 1);
+            WriteBitsToDataSerializer(buffer, &entity->is_visible, 1);
+            WriteBitsToDataSerializer(buffer, &entity->pos.x, 1);
+            WriteBitsToDataSerializer(buffer, &entity->pos.y, 1);
             var_r1 = TRUE;
         }
         if (var_r1 == FALSE) {
-            ov30_02385C54(buffer, &zeroes, 7);
+            WriteBitsToDataSerializer(buffer, &zeroes, 7);
         }
     }
 }
@@ -350,18 +350,18 @@ void ov30_02382FB8(void *buffer)
     }
     if (entity->type == ENTITY_HIDDEN_STAIRS) {
         sp1 = 1;
-        ov30_02385C54(buffer, &sp1, 1);
-        ov30_02385C54(buffer, &entity->is_visible, 1);
-        ov30_02385C54(buffer, &entity->pos.x, 1);
-        ov30_02385C54(buffer, &entity->pos.y, 1);
+        WriteBitsToDataSerializer(buffer, &sp1, 1);
+        WriteBitsToDataSerializer(buffer, &entity->is_visible, 1);
+        WriteBitsToDataSerializer(buffer, &entity->pos.x, 1);
+        WriteBitsToDataSerializer(buffer, &entity->pos.y, 1);
     }
-    else 
+    else
     {
         sp0 = 0;
-        ov30_02385C54(buffer, &sp0, 1);
-        ov30_02385C54(buffer, &sp0, 1);
-        ov30_02385C54(buffer, &sp0, 1);
-        ov30_02385C54(buffer, &sp0, 1);
+        WriteBitsToDataSerializer(buffer, &sp0, 1);
+        WriteBitsToDataSerializer(buffer, &sp0, 1);
+        WriteBitsToDataSerializer(buffer, &sp0, 1);
+        WriteBitsToDataSerializer(buffer, &sp0, 1);
     }
 }
 
@@ -426,25 +426,25 @@ void ov30_023831E8(void *buffer, struct entity* entity)
     }
     if (valid_entity) {
         monster_ptr = (struct monster *)entity->info;
-        ov30_02385C54(buffer, &sp14, 1);
-        ov30_02385C54(buffer, &entity->pos.x, 1);
-        ov30_02385C54(buffer, &entity->pos.y, 1);
-        ov30_02385C54(buffer, &entity->is_visible, 1);
-        ov30_02385C54(buffer, &entity->spawn_genid, 2);
+        WriteBitsToDataSerializer(buffer, &sp14, 1);
+        WriteBitsToDataSerializer(buffer, &entity->pos.x, 1);
+        WriteBitsToDataSerializer(buffer, &entity->pos.y, 1);
+        WriteBitsToDataSerializer(buffer, &entity->is_visible, 1);
+        WriteBitsToDataSerializer(buffer, &entity->spawn_genid, 2);
     } else {
         memset(&monster, 0, sizeof(struct monster));
         monster_ptr = &monster;
-        ov30_02385C54(buffer, &sp18, 1);
-        ov30_02385C54(buffer, &sp18, 1);
-        ov30_02385C54(buffer, &sp18, 1);
-        ov30_02385C54(buffer, &sp18, 1);
-        ov30_02385C54(buffer, &sp18, 2);
+        WriteBitsToDataSerializer(buffer, &sp18, 1);
+        WriteBitsToDataSerializer(buffer, &sp18, 1);
+        WriteBitsToDataSerializer(buffer, &sp18, 1);
+        WriteBitsToDataSerializer(buffer, &sp18, 1);
+        WriteBitsToDataSerializer(buffer, &sp18, 2);
     }
     ov30_02385D14(buffer, monster_ptr->flags);
     spC = monster_ptr->apparent_id;
-    ov30_02385C54(buffer, &spC, 2);
+    WriteBitsToDataSerializer(buffer, &spC, 2);
     spA = monster_ptr->id;
-    ov30_02385C54(buffer, &spA, 2);
+    WriteBitsToDataSerializer(buffer, &spA, 2);
     ov30_02385DD4(buffer, monster_ptr->is_not_team_member);
     ov30_02385DD4(buffer, monster_ptr->is_team_leader);
     ov30_02385DD4(buffer, monster_ptr->is_ally);
@@ -474,90 +474,90 @@ void ov30_023831E8(void *buffer, struct entity* entity)
     ov30_02385DB4(buffer, monster_ptr->stat_modifiers.offensive_multipliers[1]);
     ov30_02385DB4(buffer, monster_ptr->stat_modifiers.defensive_multipliers[0]);
     ov30_02385DB4(buffer, monster_ptr->stat_modifiers.defensive_multipliers[1]);
-    ov30_02385C54(buffer, &monster_ptr->action.direction, 1);
-    ov30_02385C54(buffer, &monster_ptr->action.item_target_position.x, 1);
-    ov30_02385C54(buffer, &monster_ptr->action.item_target_position.y, 1);
+    WriteBitsToDataSerializer(buffer, &monster_ptr->action.direction, 1);
+    WriteBitsToDataSerializer(buffer, &monster_ptr->action.item_target_position.x, 1);
+    WriteBitsToDataSerializer(buffer, &monster_ptr->action.item_target_position.y, 1);
     sp7 = monster_ptr->types[0];
-    ov30_02385C54(buffer,  &sp7, 1);
+    WriteBitsToDataSerializer(buffer,  &sp7, 1);
     sp6 = monster_ptr->types[1];
-    ov30_02385C54(buffer,  &sp6, 1);
+    WriteBitsToDataSerializer(buffer,  &sp6, 1);
     sp5 = monster_ptr->abilities[0];
-    ov30_02385C54(buffer,  &sp5, 1);
+    WriteBitsToDataSerializer(buffer,  &sp5, 1);
     sp4 = monster_ptr->abilities[1];
-    ov30_02385C54(buffer,  &sp4, 1);
+    WriteBitsToDataSerializer(buffer,  &sp4, 1);
     ov30_02384268(buffer, &monster_ptr->held_item);
     sp8 = monster_ptr->previous_held_item_id;
-    ov30_02385C54(buffer,  &sp8, 2);
+    WriteBitsToDataSerializer(buffer,  &sp8, 2);
 
     for(var_r5 = 0; var_r5 < NUM_PREV_POS; var_r5++)
     {
         ov30_02385DF8(buffer, &monster_ptr->prev_pos[var_r5]);
     }
 
-    ov30_02385C54(buffer, &monster_ptr->ai_target.ai_objective, 1);
+    WriteBitsToDataSerializer(buffer, &monster_ptr->ai_target.ai_objective, 1);
     ov30_02385DD4(buffer, monster_ptr->ai_target.ai_not_next_to_target);
     ov30_02385DD4(buffer, monster_ptr->ai_target.ai_targeting_enemy);
     ov30_02385DD4(buffer, monster_ptr->ai_target.ai_turning_around);
     ov30_02385D14(buffer, monster_ptr->ai_target.ai_target_spawn_genid);
     ov30_02385DF8(buffer, &monster_ptr->ai_target.ai_target_pos);
-    
-    ov30_02385C54(buffer, &monster_ptr->iq_skill_menu_flags, 0x45);
-    ov30_02385C54(buffer, &monster_ptr->iq_skill_flags, 0x45);
-    
+
+    WriteBitsToDataSerializer(buffer, &monster_ptr->iq_skill_menu_flags, 0x45);
+    WriteBitsToDataSerializer(buffer, &monster_ptr->iq_skill_flags, 0x45);
+
     sp3 = monster_ptr->tactic;
-    ov30_02385C54(buffer, &sp3, 1);
+    WriteBitsToDataSerializer(buffer, &sp3, 1);
     ov30_02385D34(buffer, monster_ptr->hidden_power_base_power);
     sp2 = monster_ptr->hidden_power_type;
-    ov30_02385C54(buffer,  &sp2, 1);
+    WriteBitsToDataSerializer(buffer,  &sp2, 1);
     ov30_02385D74(buffer, monster_ptr->unique_id);
     ov30_02385D74(buffer, monster_ptr->wrap_pair_unique_id);
     ov30_02385D74(buffer, monster_ptr->bide_damage_tally);
-    ov30_02385C54(buffer, &monster_ptr->sleep_class_status.sleep, 1);
+    WriteBitsToDataSerializer(buffer, &monster_ptr->sleep_class_status.sleep, 1);
     ov30_02385D54(buffer, monster_ptr->sleep_class_status.sleep_turns);
-    ov30_02385C54(buffer, &monster_ptr->burn_class_status.burn, 1);
+    WriteBitsToDataSerializer(buffer, &monster_ptr->burn_class_status.burn, 1);
     ov30_02385D54(buffer, monster_ptr->burn_class_status.burn_turns);
     ov30_02385D54(buffer, monster_ptr->burn_class_status.burn_damage_countdown);
     ov30_02385D54(buffer, monster_ptr->burn_class_status.badly_poisoned_damage_count);
-    ov30_02385C54(buffer, &monster_ptr->frozen_class_status.freeze, 1);
+    WriteBitsToDataSerializer(buffer, &monster_ptr->frozen_class_status.freeze, 1);
     ov30_02385D54(buffer, monster_ptr->frozen_class_status.freeze_turns);
     ov30_02385D54(buffer, monster_ptr->frozen_class_status.freeze_damage_countdown);
     ov30_02385D74(buffer, monster_ptr->frozen_class_status.constriction_animation);
-    ov30_02385C54(buffer, &monster_ptr->cringe_class_status.cringe, 1);
+    WriteBitsToDataSerializer(buffer, &monster_ptr->cringe_class_status.cringe, 1);
     ov30_02385D54(buffer, monster_ptr->cringe_class_status.cringe_turns);
-    ov30_02385C54(buffer, &monster_ptr->bide_class_status.bide, 1);
+    WriteBitsToDataSerializer(buffer, &monster_ptr->bide_class_status.bide, 1);
     ov30_02385D54(buffer, monster_ptr->bide_class_status.bide_turns);
     ov30_02385D54(buffer, monster_ptr->bide_class_status.bide_move_slot);
-    ov30_02385C54(buffer, &monster_ptr->reflect_class_status.reflect, 1);
+    WriteBitsToDataSerializer(buffer, &monster_ptr->reflect_class_status.reflect, 1);
     ov30_02385D54(buffer, monster_ptr->reflect_class_status.reflect_turns);
     ov30_02385D54(buffer, monster_ptr->reflect_class_status.reflect_damage_countdown);
 
-    ov30_02385C54(buffer, &monster_ptr->curse_class_status.curse, 1);
+    WriteBitsToDataSerializer(buffer, &monster_ptr->curse_class_status.curse, 1);
     ov30_02385DD4(buffer, monster_ptr->curse_class_status.curse_applier_non_team_member_flag);
     ov30_02385DD4(buffer, monster_ptr->curse_class_status.dec);
     ov30_02385D54(buffer, monster_ptr->curse_class_status.curse_turns);
     ov30_02385D54(buffer, monster_ptr->curse_class_status.curse_damage_countdown);
 
-    ov30_02385C54(buffer, &monster_ptr->leech_seed_class_status.leech_seed, 1);
+    WriteBitsToDataSerializer(buffer, &monster_ptr->leech_seed_class_status.leech_seed, 1);
     ov30_02385D74(buffer, monster_ptr->leech_seed_class_status.statuses_applier_id);
     ov30_02385D54(buffer, monster_ptr->leech_seed_class_status.leech_seed_source_monster_index);
     ov30_02385D54(buffer, monster_ptr->leech_seed_class_status.leech_seed_turns);
     ov30_02385D54(buffer, monster_ptr->leech_seed_class_status.leech_seed_damage_countdown);
-    
-    ov30_02385C54(buffer, &monster_ptr->sure_shot_class_status.sure_shot, 1);
+
+    WriteBitsToDataSerializer(buffer, &monster_ptr->sure_shot_class_status.sure_shot, 1);
     ov30_02385D54(buffer, monster_ptr->sure_shot_class_status.sure_shot_turns);
 
-    ov30_02385C54(buffer, &monster_ptr->long_toss_class_status.status, 1);
+    WriteBitsToDataSerializer(buffer, &monster_ptr->long_toss_class_status.status, 1);
 
 
-    ov30_02385C54(buffer, &monster_ptr->invisible_class_status.status, 1);
+    WriteBitsToDataSerializer(buffer, &monster_ptr->invisible_class_status.status, 1);
     ov30_02385D54(buffer, monster_ptr->invisible_class_status.turns);
-    ov30_02385C54(buffer, &monster_ptr->blinker_class_status.blinded, 1);
+    WriteBitsToDataSerializer(buffer, &monster_ptr->blinker_class_status.blinded, 1);
     ov30_02385D54(buffer, monster_ptr->blinker_class_status.blinded_turns);
-    ov30_02385C54(buffer, &monster_ptr->muzzled, 1);
+    WriteBitsToDataSerializer(buffer, &monster_ptr->muzzled, 1);
     ov30_02385D54(buffer, monster_ptr->muzzled_turns);
-    ov30_02385C54(buffer, &monster_ptr->miracle_eye, 1);
+    WriteBitsToDataSerializer(buffer, &monster_ptr->miracle_eye, 1);
     ov30_02385D54(buffer, monster_ptr->miracle_eye_turns);
-    ov30_02385C54(buffer, &monster_ptr->magnet_rise, 1);
+    WriteBitsToDataSerializer(buffer, &monster_ptr->magnet_rise, 1);
     ov30_02385D54(buffer, monster_ptr->magnet_rise_turns);
     ov30_02385DD4(buffer, monster_ptr->power_ears);
     ov30_02385DD4(buffer, monster_ptr->scanning);
@@ -578,11 +578,11 @@ void ov30_023831E8(void *buffer, struct entity* entity)
     ov30_02385D54(buffer, monster_ptr->no_slip_cap_counter);
     ov30_02385D54(buffer, monster_ptr->field_0x10a);
     sp1 = monster_ptr->two_turn_move_invincible;
-    ov30_02385C54(buffer, &sp1, 1);
+    WriteBitsToDataSerializer(buffer, &sp1, 1);
     sp0 = monster_ptr->decoy_ai_tracker;
-    ov30_02385C54(buffer, &sp0, 1);
+    WriteBitsToDataSerializer(buffer, &sp0, 1);
     sp10 = monster_ptr->speed_stage;
-    ov30_02385C54(buffer, &sp10, 4);
+    WriteBitsToDataSerializer(buffer, &sp10, 4);
     ov30_02385EB8(buffer, monster_ptr->speed_up_counters, 5);
     ov30_02385EB8(buffer, monster_ptr->speed_down_counters, 5);
     ov30_02385D54(buffer, monster_ptr->stockpile_stage);
@@ -595,11 +595,11 @@ void ov30_023831E8(void *buffer, struct entity* entity)
         struct move *move = &monster_ptr->moves.moves[move_index];
         ov30_02385D54(buffer, monster_ptr->moves.moves[move_index].flags0);
         ov30_02385D54(buffer, monster_ptr->moves.moves[move_index].flags2);
-        ov30_02385C54(buffer, &move->id, 2);
+        WriteBitsToDataSerializer(buffer, &move->id, 2);
         ov30_02385D54(buffer, monster_ptr->moves.moves[move_index].pp);
         ov30_02385D54(buffer, monster_ptr->moves.moves[move_index].ginseng);
     }
-    
+
     ov30_02385D54(buffer, monster_ptr->moves.struggle_move_flags);
     ov30_02385D34(buffer, monster_ptr->belly.integer);
     ov30_02385D34(buffer, monster_ptr->belly.fractional);
@@ -680,10 +680,10 @@ void ov30_02383C70(void *buffer)
             ov30_023842B0(buffer, &DUNGEON_PTR->gen_info.tiles[tile_index_y][tile_index_x]);
         }
     }
-    
+
     ov30_02385DF8(buffer, &DUNGEON_PTR->gen_info.team_spawn_pos);
     ov30_02385DF8(buffer, &DUNGEON_PTR->gen_info.stairs_pos);
-    
+
     pos = DUNGEON_PTR->gen_info.hidden_stairs_pos;
     if (pos.x == -1) {
         pos.x = 0xFF;
@@ -692,17 +692,17 @@ void ov30_02383C70(void *buffer)
         pos.y = 0xFF;
     }
     ov30_02385DF8(buffer, &pos);
-    
+
     for(int var_r5 = 0; var_r5 < 8; var_r5++)
     {
         ov30_02385E20(buffer, &DUNGEON_PTR->gen_info.individual_team_spawn_positions[var_r5]);
     }
-    
+
     for(int var_r5_2 = 0; var_r5_2 < 8; var_r5_2++)
     {
         ov30_02385D54(buffer, DUNGEON_PTR->unk_team_direction_array[var_r5_2]);
     }
-    
+
     ov30_02385E48(buffer, (s32 *)&DUNGEON_PTR->kecleon_shop_min_x);
     ov30_02385E48(buffer, (s32 *)&DUNGEON_PTR->fixed_room_min_x);
     ov30_02385E90(buffer, &DUNGEON_PTR->fixed_room_width);
@@ -715,26 +715,26 @@ void ov30_02383C70(void *buffer)
             ov30_02385D34(buffer, DUNGEON_PTR->field_0xd260[tile_index_y][tile_index_x]);
         }
     }
-    
+
     weather = &DUNGEON_PTR->weather;
-    ov30_02385C54(buffer, &weather->weather, 1);
-    ov30_02385C54(buffer, &weather->natural_weather, 1);
-    
+    WriteBitsToDataSerializer(buffer, &weather->weather, 1);
+    WriteBitsToDataSerializer(buffer, &weather->natural_weather, 1);
+
     for(int weather_index = 0; weather_index < 8; weather_index++)
     {
         ov30_02385D14(buffer, (weather->weather_turns[weather_index]));
         ov30_02385D14(buffer, (weather->artificial_permaweather_turns[weather_index]));
     }
-    
+
     ov30_02385D54(buffer, weather->weather_damage_counter);
     ov30_02385D54(buffer, weather->mud_sport_turns);
     ov30_02385D54(buffer, weather->water_sport_turns);
     ov30_02385DD4(buffer, weather->nullify_weather);
-    
+
     gravity = &DUNGEON_PTR->gravity;
-    ov30_02385C54(buffer, gravity, 1);
-    ov30_02385C54(buffer, gravity + 1, 1);
-    
+    WriteBitsToDataSerializer(buffer, gravity, 1);
+    WriteBitsToDataSerializer(buffer, gravity + 1, 1);
+
     ov30_02385D34(buffer, DUNGEON_PTR->victory_counter);
 }
 
@@ -766,18 +766,18 @@ void ov30_02384208(void *buffer)
 
 void ov30_02384268(void *buffer, struct item *item)
 {
-    ov30_02385C54(buffer, &item->flags, 1);
-    ov30_02385C54(buffer, &item->held_by, 1);
-    ov30_02385C54(buffer, &item->quantity, 2);
-    ov30_02385C54(buffer, &item->id, 2);
+    WriteBitsToDataSerializer(buffer, &item->flags, 1);
+    WriteBitsToDataSerializer(buffer, &item->held_by, 1);
+    WriteBitsToDataSerializer(buffer, &item->quantity, 2);
+    WriteBitsToDataSerializer(buffer, &item->id, 2);
 }
 
 void ov30_023842B0(void *buffer, struct tile* tile)
 {
     ov30_02385D14(buffer, tile->terrain_flags);
     ov30_02385D14(buffer, tile->spawn_or_visibility_flags.spawn);
-    ov30_02385C54(buffer, &tile->room, 1);
-    ov30_02385C54(buffer, &tile->field_0x6, 1);
+    WriteBitsToDataSerializer(buffer, &tile->room, 1);
+    WriteBitsToDataSerializer(buffer, &tile->field_0x6, 1);
 }
 
 #ifndef EUROPE
@@ -800,10 +800,10 @@ void ov30_023842F4(void *buffer, s32 arg1)
     struct DataSerializer sp4;
     u32 sp0;
 
-    ov30_02385C8C(&sp4, buffer, arg1);
-    ov30_02385CA4(&sp4, &sp0, 4);
+    InitDataSerializerReader(&sp4, buffer, arg1);
+    ReadBitsFromDataSerializer(&sp4, &sp0, 4);
     ov30_02385CF0(&sp4, OVERLAY30_JP_STRING_1);
-    ov30_02385CA4(&sp4, &DUNGEON_PTR->id, 0xAC);
+    ReadBitsFromDataSerializer(&sp4, &DUNGEON_PTR->id, 0xAC);
     ov30_02385CF0(&sp4, OVERLAY30_JP_STRING_1);
 
     DUNGEON_PTR->highest_enemy_level = ov30_02385EDC(&sp4);
@@ -821,7 +821,7 @@ void ov30_023842F4(void *buffer, s32 arg1)
     ov30_02384C6C(&sp4);
     ov30_02384CD4(&sp4);
     ov30_02385CF0(&sp4, OVERLAY30_JP_STRING_2);
-    FinishBitSerializer(&sp4);
+    FinishDataSerializer(&sp4);
 #ifdef EUROPE
     ov29_022FB920(0);
 #else
@@ -830,7 +830,7 @@ void ov30_023842F4(void *buffer, s32 arg1)
 }
 
 void ov30_02384400(void *buffer) {
-   
+
     struct weather* weather;
     void* temp_r4_2;
     s32 tile_index_y;
@@ -846,7 +846,7 @@ void ov30_02384400(void *buffer) {
     DUNGEON_PTR->gen_info.unk_fixed_room_static_monster_tracker = ov30_02385EF4(buffer);
     DUNGEON_PTR->gen_info.hidden_stairs_type = (enum hidden_stairs_type) ov30_02385EF4(buffer);
     DUNGEON_PTR->gen_info.hidden_floor_type = (enum hidden_stairs_type) ov30_02385EF4(buffer);
-    
+
     DUNGEON_PTR->gen_info.tileset_id = ov30_02385EDC(buffer);
     DUNGEON_PTR->gen_info.music_table_idx = ov30_02385EDC(buffer);
     DUNGEON_PTR->gen_info.staircase_visual_idx = ov30_02385EDC(buffer);
@@ -860,11 +860,11 @@ void ov30_02384400(void *buffer) {
             ov30_0238483C(buffer, &DUNGEON_PTR->gen_info.tiles[tile_index_x][tile_index_y]);
         }
     }
-    
+
     ov30_02385F7C(buffer, &DUNGEON_PTR->gen_info.team_spawn_pos);
     ov30_02385F7C(buffer, &DUNGEON_PTR->gen_info.stairs_pos);
     ov30_02385F7C(buffer, &DUNGEON_PTR->gen_info.hidden_stairs_pos);
-    
+
 
     if (DUNGEON_PTR->gen_info.hidden_stairs_pos.x == 0xFF) {
         DUNGEON_PTR->gen_info.hidden_stairs_pos.x = -1;
@@ -882,11 +882,11 @@ void ov30_02384400(void *buffer) {
     {
         DUNGEON_PTR->unk_team_direction_array[var_r5_2] = (enum direction_id) ov30_02385EF4(buffer);
     }
-    
+
     ov30_02385FE4(buffer, (s32*)&DUNGEON_PTR->kecleon_shop_min_x);
     ov30_02385FE4(buffer, (s32*)&DUNGEON_PTR->fixed_room_min_x);
     ov30_02386040(buffer, &DUNGEON_PTR->fixed_room_width);
-    
+
 
 
     for(tile_index_x = 0; tile_index_x < 8; tile_index_x++)
@@ -898,12 +898,12 @@ void ov30_02384400(void *buffer) {
         }
     }
 
-    
+
     // weather
     weather = &DUNGEON_PTR->weather;
     memset(weather, 0, sizeof(struct weather));
-    ov30_02385CA4(buffer, &weather->weather, 1);
-    ov30_02385CA4(buffer, &weather->natural_weather, 1);
+    ReadBitsFromDataSerializer(buffer, &weather->weather, 1);
+    ReadBitsFromDataSerializer(buffer, &weather->natural_weather, 1);
 
 
     for(int weather_index = 0; weather_index < 8; weather_index++)
@@ -911,16 +911,16 @@ void ov30_02384400(void *buffer) {
         weather->weather_turns[weather_index] = ov30_02385EC4(buffer);
         weather->artificial_permaweather_turns[weather_index] = ov30_02385EC4(buffer);
     }
-    
+
     weather->weather_damage_counter = ov30_02385EF4(buffer);
     weather->mud_sport_turns = ov30_02385EF4(buffer);
     weather->water_sport_turns = ov30_02385EF4(buffer);
     weather->nullify_weather = ov30_02385F54(buffer);
-    
+
     temp_r4_2 = &DUNGEON_PTR->gravity;
     MemZero(temp_r4_2, 2);
-    ov30_02385CA4(buffer, temp_r4_2, 1);
-    ov30_02385CA4(buffer, temp_r4_2 + 1, 1);
+    ReadBitsFromDataSerializer(buffer, temp_r4_2, 1);
+    ReadBitsFromDataSerializer(buffer, temp_r4_2 + 1, 1);
     DUNGEON_PTR->victory_counter = ov30_02385EDC(buffer);
 }
 
@@ -929,8 +929,8 @@ void ov30_0238483C(void *buffer, struct tile* tile)
     memset(tile, 0, sizeof(struct tile));
     tile->terrain_flags = ov30_02385EC4(buffer);
     tile->spawn_or_visibility_flags.spawn = ov30_02385EC4(buffer);
-    ov30_02385CA4(buffer, &tile->room, 1);
-    ov30_02385CA4(buffer, &tile->field_0x6, 1);
+    ReadBitsFromDataSerializer(buffer, &tile->room, 1);
+    ReadBitsFromDataSerializer(buffer, &tile->field_0x6, 1);
     tile->monster = NULL;
     tile->object = NULL;
 }
@@ -988,10 +988,10 @@ void ov30_02384A94(void *buffer)
 void ov30_02384B24(void *buffer, struct item *item)
 {
     memset(item, 0, sizeof(struct item));
-    ov30_02385CA4(buffer, &item->flags, 1);
-    ov30_02385CA4(buffer, &item->held_by, 1);
-    ov30_02385CA4(buffer, &item->quantity, 2);
-    ov30_02385CA4(buffer, &item->id, 2);
+    ReadBitsFromDataSerializer(buffer, &item->flags, 1);
+    ReadBitsFromDataSerializer(buffer, &item->held_by, 1);
+    ReadBitsFromDataSerializer(buffer, &item->quantity, 2);
+    ReadBitsFromDataSerializer(buffer, &item->id, 2);
 }
 
 void ov30_02384B84(void *buffer)
@@ -1011,10 +1011,10 @@ void ov30_02384B84(void *buffer)
         sp3 = 6;
         sp2 = 0;
         sp1 = 0;
-        ov30_02385CA4(buffer, &sp3, 1);
-        ov30_02385CA4(buffer, &sp2, 1);
-        ov30_02385CA4(buffer, &sp1, 1);
-        ov30_02385CA4(buffer, &sp0, 1);
+        ReadBitsFromDataSerializer(buffer, &sp3, 1);
+        ReadBitsFromDataSerializer(buffer, &sp2, 1);
+        ReadBitsFromDataSerializer(buffer, &sp1, 1);
+        ReadBitsFromDataSerializer(buffer, &sp0, 1);
         temp_r5 = ov30_02385F54(buffer);
         ov30_02385F7C(buffer, &pos);
         if (sp3 != 0xFF) {
@@ -1043,7 +1043,7 @@ void ov30_02384C6C(void *buffer)
     }
 }
 
-void ov30_02384CD4(void *buffer) 
+void ov30_02384CD4(void *buffer)
 {
     ov30_02385CF0(buffer, OVERLAY30_JP_STRING_1);
     DUNGEON_PTR->monster_unique_id_counter = ov30_02385F0C(buffer);
@@ -1055,13 +1055,13 @@ void ov30_02384CD4(void *buffer)
     DUNGEON_PTR->decoy_is_active = ov30_02385F54(buffer);
     DUNGEON_PTR->mew_cannot_spawn = ov30_02385F54(buffer);
     DUNGEON_PTR->shaymin_sky_form_loaded = ov30_02385F54(buffer);
-    DUNGEON_PTR->deoxys_floor_id = (enum monster_id) ov30_02385EC4(buffer);    
-    
+    DUNGEON_PTR->deoxys_floor_id = (enum monster_id) ov30_02385EC4(buffer);
+
     for(int var_r6 = 0; var_r6 < MAX_TEAM_MEMBERS; var_r6++)
     {
         ov30_02384E28(buffer, 1, var_r6);
     }
-    
+
     for(int var_r6_2 = 0; var_r6_2 < DUNGEON_MAX_WILD_POKEMON; var_r6_2++)
     {
         ov30_02384E28(buffer, 0, var_r6_2);
@@ -1069,14 +1069,14 @@ void ov30_02384CD4(void *buffer)
 }
 
 void UpdateEntityPixelPos(void*, void *);
-void UpdateIqSkillsWrapper(void*); 
+void UpdateIqSkillsWrapper(void*);
 void ov29_02338F24(s16, s16);
 extern struct entity* LEADER_PTR;
 
 // 98.65% matched - Seth
-// https://decomp.me/scratch/g3lUO 
+// https://decomp.me/scratch/g3lUO
 
-asm void ov30_02384E28(void *arg0, s32 arg1, s32 index) 
+asm void ov30_02384E28(void *arg0, s32 arg1, s32 index)
 {
 #ifdef JAPAN
 #define OV30_02384E28_OFFSET -4
@@ -1127,7 +1127,7 @@ asm void ov30_02384E28(void *arg0, s32 arg1, s32 index)
 	mov r0, r10
 	add r1, sp, #0xe
 	mov r2, #2
-	bl ov30_02385CA4
+	bl ReadBitsFromDataSerializer
 	ldrsh r2, [sp, #0xe]
 	add r0, sp, #0xc
 	mov r1, #0
@@ -1137,7 +1137,7 @@ asm void ov30_02384E28(void *arg0, s32 arg1, s32 index)
 	mov r0, r10
 	add r1, sp, #0xc
 	mov r2, #2
-	bl ov30_02385CA4
+	bl ReadBitsFromDataSerializer
 	ldrsh r1, [sp, #0xc]
 	mov r0, r10
 	strh r1, [sp, #0x1a]
@@ -1232,7 +1232,7 @@ asm void ov30_02384E28(void *arg0, s32 arg1, s32 index)
 	mov r0, r10
 	add r1, sp, #0x64
 	mov r2, #1
-	bl ov30_02385CA4
+	bl ReadBitsFromDataSerializer
 	mov r0, #7
 	strb r0, [sp, #0x65]
 	mov r0, r10
@@ -1245,7 +1245,7 @@ asm void ov30_02384E28(void *arg0, s32 arg1, s32 index)
 	mov r0, r10
 	add r1, sp, #8
 	mov r2, #1
-	bl ov30_02385CA4
+	bl ReadBitsFromDataSerializer
 	ldrb r2, [sp, #8]
 	add r0, sp, #7
 	mov r1, #0
@@ -1255,7 +1255,7 @@ asm void ov30_02384E28(void *arg0, s32 arg1, s32 index)
 	mov r0, r10
 	add r1, sp, #7
 	mov r2, #1
-	bl ov30_02385CA4
+	bl ReadBitsFromDataSerializer
 	ldrb r2, [sp, #7]
 	add r0, sp, #6
 	mov r1, #0
@@ -1265,7 +1265,7 @@ asm void ov30_02384E28(void *arg0, s32 arg1, s32 index)
 	mov r0, r10
 	add r1, sp, #6
 	mov r2, #1
-	bl ov30_02385CA4
+	bl ReadBitsFromDataSerializer
 	ldrb r2, [sp, #6]
 	add r0, sp, #5
 	mov r1, #0
@@ -1275,7 +1275,7 @@ asm void ov30_02384E28(void *arg0, s32 arg1, s32 index)
 	mov r0, r10
 	add r1, sp, #5
 	mov r2, #1
-	bl ov30_02385CA4
+	bl ReadBitsFromDataSerializer
 	ldrb r2, [sp, #5]
 	mov r0, r10
 	add r1, sp, #0x7a
@@ -1288,7 +1288,7 @@ asm void ov30_02384E28(void *arg0, s32 arg1, s32 index)
 	add r1, sp, #0xa
 	mov r0, r10
 	mov r2, #2
-	bl ov30_02385CA4
+	bl ReadBitsFromDataSerializer
 	ldrsh r0, [sp, #0xa]
 	mov r4, #0
 	add r7, sp, #0x82
@@ -1303,7 +1303,7 @@ _02385158:
 	add r1, sp, #0x94
 	mov r0, r10
 	mov r2, #1
-	bl ov30_02385CA4
+	bl ReadBitsFromDataSerializer
 	mov r0, r10
 	bl ov30_02385F54
 	strb r0, [sp, #0x95]
@@ -1325,11 +1325,11 @@ _02385158:
 	mov r0, r10
 	add r1, sp, #0xa8
 	mov r2, #0x45
-	bl ov30_02385CA4
+	bl ReadBitsFromDataSerializer
 	mov r0, r10
 	add r1, sp, #0xb4
 	mov r2, #0x45
-	bl ov30_02385CA4
+	bl ReadBitsFromDataSerializer
 	add r0, sp, #4
 	mov r1, #0
 	mov r2, #1
@@ -1337,7 +1337,7 @@ _02385158:
 	mov r0, r10
 	add r1, sp, #4
 	mov r2, #1
-	bl ov30_02385CA4
+	bl ReadBitsFromDataSerializer
 	ldrb r1, [sp, #4]
 	mov r0, r10
 	strb r1, [sp, #0xc0]
@@ -1350,7 +1350,7 @@ _02385158:
 	mov r0, r10
 	add r1, sp, #3
 	mov r2, #1
-	bl ov30_02385CA4
+	bl ReadBitsFromDataSerializer
 	ldrb r1, [sp, #3]
 	mov r0, r10
 	strb r1, [sp, #0x5e]
@@ -1365,14 +1365,14 @@ _02385158:
 	mov r0, r10
 	add r1, sp, #0xd5
 	mov r2, #1
-	bl ov30_02385CA4
+	bl ReadBitsFromDataSerializer
 	mov r0, r10
 	bl ov30_02385EF4
 	strb r0, [sp, #0xd6]
 	add r1, sp, #0xd7
 	mov r0, r10
 	mov r2, #1
-	bl ov30_02385CA4
+	bl ReadBitsFromDataSerializer
 	mov r0, r10
 	bl ov30_02385EF4
 	strb r0, [sp, #0xd8]
@@ -1385,7 +1385,7 @@ _02385158:
 	mov r0, r10
 	add r1, sp, #0xdc
 	mov r2, #1
-	bl ov30_02385CA4
+	bl ReadBitsFromDataSerializer
 	mov r0, r10
 	bl ov30_02385EF4
 	strb r0, [sp, #0xe4]
@@ -1398,14 +1398,14 @@ _02385158:
 	mov r0, r10
 	add r1, sp, #0xe8
 	mov r2, #1
-	bl ov30_02385CA4
+	bl ReadBitsFromDataSerializer
 	mov r0, r10
 	bl ov30_02385EF4
 	strb r0, [sp, #0xe9]
 	mov r0, r10
 	add r1, sp, #0xea
 	mov r2, #1
-	bl ov30_02385CA4
+	bl ReadBitsFromDataSerializer
 	mov r0, r10
 	bl ov30_02385EF4
 	strb r0, [sp, #0xeb]
@@ -1415,7 +1415,7 @@ _02385158:
 	mov r0, r10
 	add r1, sp, #0xed
 	mov r2, #1
-	bl ov30_02385CA4
+	bl ReadBitsFromDataSerializer
 	mov r0, r10
 	bl ov30_02385EF4
 	strb r0, [sp, #0xee]
@@ -1425,7 +1425,7 @@ _02385158:
 	mov r0, r10
 	add r1, sp, #0xf0
 	mov r2, #1
-	bl ov30_02385CA4
+	bl ReadBitsFromDataSerializer
 	mov r0, r10
 	bl ov30_02385F54
 	strb r0, [sp, #0xf1]
@@ -1441,7 +1441,7 @@ _02385158:
 	mov r0, r10
 	add r1, sp, #0xf8
 	mov r2, #1
-	bl ov30_02385CA4
+	bl ReadBitsFromDataSerializer
 	mov r0, r10
 	bl ov30_02385F0C
 	str r0, [sp, #0xfc]
@@ -1457,7 +1457,7 @@ _02385158:
 	mov r0, r10
 	add r1, sp, #0x104
 	mov r2, #1
-	bl ov30_02385CA4
+	bl ReadBitsFromDataSerializer
 	mov r0, r10
 	bl ov30_02385EF4
 	add r1, sp, #0x100
@@ -1465,12 +1465,12 @@ _02385158:
 	mov r0, r10
 	add r1, r1, #6
 	mov r2, #1
-	bl ov30_02385CA4
+	bl ReadBitsFromDataSerializer
 	add r1, sp, #0x100
 	mov r0, r10
 	add r1, r1, #7
 	mov r2, #1
-	bl ov30_02385CA4
+	bl ReadBitsFromDataSerializer
 	mov r0, r10
 	bl ov30_02385EF4
 	add r1, sp, #0x100
@@ -1478,7 +1478,7 @@ _02385158:
 	mov r0, r10
 	add r1, r1, #9
 	mov r2, #1
-	bl ov30_02385CA4
+	bl ReadBitsFromDataSerializer
 	mov r0, r10
 	bl ov30_02385EF4
 	add r1, sp, #0x100
@@ -1486,7 +1486,7 @@ _02385158:
 	mov r0, r10
 	add r1, r1, #0xb
 	mov r2, #1
-	bl ov30_02385CA4
+	bl ReadBitsFromDataSerializer
 	mov r0, r10
 	bl ov30_02385EF4
 	add r1, sp, #0x100
@@ -1494,7 +1494,7 @@ _02385158:
 	mov r0, r10
 	add r1, r1, #0xd
 	mov r2, #1
-	bl ov30_02385CA4
+	bl ReadBitsFromDataSerializer
 	mov r0, r10
 	bl ov30_02385EF4
 	add r1, sp, #0x100
@@ -1502,7 +1502,7 @@ _02385158:
 	add r1, r1, #0xf
 	mov r0, r10
 	mov r2, #1
-	bl ov30_02385CA4
+	bl ReadBitsFromDataSerializer
 	mov r0, r10
 	bl ov30_02385EF4
 	strb r0, [sp, #0x110]
@@ -1580,7 +1580,7 @@ _02385158:
 	mov r0, r10
 	add r1, sp, #2
 	mov r2, #1
-	bl ov30_02385CA4
+	bl ReadBitsFromDataSerializer
 	ldrb r3, [sp, #2]
 	add r0, sp, #1
 	mov r1, #0
@@ -1590,7 +1590,7 @@ _02385158:
 	add r1, sp, #1
 	mov r0, r10
 	mov r2, #1
-	bl ov30_02385CA4
+	bl ReadBitsFromDataSerializer
 	ldrb r2, [sp, #1]
 	add r0, sp, #0x10
 	mov r1, #0
@@ -1600,7 +1600,7 @@ _02385158:
 	mov r0, r10
 	add r1, sp, #0x10
 	mov r2, #4
-	bl ov30_02385CA4
+	bl ReadBitsFromDataSerializer
 	ldr r1, [sp, #0x10]
 	mov r0, r10
 	str r1, [sp, #0x128 + OV30_02384E28_OFFSET]
@@ -1638,7 +1638,7 @@ _02385630:
 	mov r0, r10
 	add r1, r1, #4
 	mov r2, #2
-	bl ov30_02385CA4
+	bl ReadBitsFromDataSerializer
 	mov r0, r10
 	bl ov30_02385EF4
 	add r1, r4, r7, lsl #3
@@ -1773,7 +1773,7 @@ _02385630:
 	mov r0, r10
 	add r1, sp, #0
 	mov r2, #1
-	bl ov30_02385CA4
+	bl ReadBitsFromDataSerializer
 	ldrb r1, [sp]
 	mov r0, r10
 	strb r1, [sp, #0xd4]
@@ -1874,10 +1874,10 @@ _023859D0:
 #endif
 }
 
-void PopulateActiveMonsterPtrs(void);        
-void ov29_022DE9F8(u8);                      
-s32 ov29_022DEA10(u32);                      
-void ov29_022E1AF4(u16, u16);                
+void PopulateActiveMonsterPtrs(void);
+void ov29_022DE9F8(u8);
+s32 ov29_022DEA10(u32);
+void ov29_022E1AF4(u16, u16);
 void ov29_022E1EC4(u16, u16);
 s32 ov29_022E1C84(s32*, s32*, s16, s16, s32);
 s32 ov29_022E2018(s32*, s32*, s16, s16, s32);
@@ -1902,13 +1902,13 @@ struct entity* ov30_023859DC(s16 id, s16 apparent_id, s32 monster_slot_index)
         return NULL;
     }
     entity = DUNGEON_PTR->monster_slot_ptrs[monster_slot_index];
-    
+
     entity->type = ENTITY_MONSTER;
     entity->field_0x24 = monster_slot_index;
-    
+
     monster = &DUNGEON_PTR->monsters[monster_slot_index];
     entity->info = monster;
-    
+
     monster->id = id;
     GetEntInfo(entity)->apparent_id = apparent_id;
     GetEntInfo(entity)->is_not_team_member = 0;
@@ -1947,18 +1947,18 @@ struct entity* ov30_02385B10(s16 id, s16 apparent_id, s32 monster_slot_index)
     {
         return NULL;
     }
-    
-   
+
+
     // NOTE: Wild Pokemon Ptrs are after Team members..
     entity = DUNGEON_PTR->monster_slot_ptrs[MAX_TEAM_MEMBERS + monster_slot_index];
 
     entity->type = ENTITY_MONSTER;
     entity->field_0x24 = monster_slot_index;
     entity->transparent = 0;
-    
+
     monster = &DUNGEON_PTR->wild_monsters[monster_slot_index];
     entity->info = monster;
-    
+
     monster->id = id;
     GetEntInfo(entity)->apparent_id = apparent_id;
     GetEntInfo(entity)->is_not_team_member = TRUE;
@@ -1970,7 +1970,7 @@ struct entity* ov30_02385B10(s16 id, s16 apparent_id, s32 monster_slot_index)
     entity->animation_id_mirror0 = 1;
     entity->field_0xb3 = 1;
     entity->elevation = 0;
-   
+
     GetEntInfo(entity)->field_0x17a = sp8;
     GetEntInfo(entity)->field_0x17b = sp4;
     ov29_022E1EC4(sp8, sp4);
@@ -1982,14 +1982,14 @@ struct entity* ov30_02385B10(s16 id, s16 apparent_id, s32 monster_slot_index)
 }
 
 
-void ov30_02385C3C(struct DataSerializer *r0, u8 *r1, s32 r2)
+void InitDataSerializerWriter(struct DataSerializer *r0, u8 *r1, s32 r2)
 {
     r0->stream = r1;
     r0->count = 0;
     r0->end = r1 + r2;
 }
 
-void ov30_02385C54(struct DataSerializer *r0, const void* src, s32 numBits)
+void WriteBitsToDataSerializer(struct DataSerializer *r0, const void* src, s32 numBits)
 {
     u8 *temp = (u8*)src;
     while (numBits != 0) {
@@ -2001,14 +2001,14 @@ void ov30_02385C54(struct DataSerializer *r0, const void* src, s32 numBits)
     }
 }
 
-void ov30_02385C8C(struct DataSerializer *r0, u8 *r1, s32 r2)
+void InitDataSerializerReader(struct DataSerializer *r0, u8 *r1, s32 r2)
 {
     r0->stream = r1;
     r0->count = 0;
     r0->end = r1 + r2;
 }
 
-void ov30_02385CA4(struct DataSerializer* r0, void* src, s32 numBits)
+void ReadBitsFromDataSerializer(struct DataSerializer* r0, void* src, s32 numBits)
 {
     u8 *temp = (u8*)src;
     while (numBits != 0) {
@@ -2021,50 +2021,50 @@ void ov30_02385CA4(struct DataSerializer* r0, void* src, s32 numBits)
 }
 
 
-void FinishBitSerializer(struct DataSerializer *r0)
+void FinishDataSerializer(struct DataSerializer *r0)
 {
 }
 
 void ov30_02385CE0(struct DataSerializer *arg0, const void *string)
 {
-    ov30_02385C54(arg0, string, 8);
+    WriteBitsToDataSerializer(arg0, string, 8);
 }
 
 void ov30_02385CF0(struct DataSerializer *arg0, const void *string)
 {
     u8 buffer[0xC];
-    ov30_02385CA4(arg0, buffer, 8);
+    ReadBitsFromDataSerializer(arg0, buffer, 8);
     buffer[8] = 0;
 }
 
 void ov30_02385D14(struct DataSerializer *arg0, u16 r1)
 {
-    ov30_02385C54(arg0, &r1, 2);
+    WriteBitsToDataSerializer(arg0, &r1, 2);
 }
 
 void ov30_02385D34(struct DataSerializer *arg0, s16 r1)
 {
-    ov30_02385C54(arg0, &r1, 2);
+    WriteBitsToDataSerializer(arg0, &r1, 2);
 }
 
 void ov30_02385D54(struct DataSerializer *arg0, u8 r1)
 {
-    ov30_02385C54(arg0, &r1, 1);
+    WriteBitsToDataSerializer(arg0, &r1, 1);
 }
 
 void ov30_02385D74(struct DataSerializer *arg0, s32 r1)
 {
-    ov30_02385C54(arg0, &r1, 4);
+    WriteBitsToDataSerializer(arg0, &r1, 4);
 }
 
 void ov30_02385D94(struct DataSerializer *arg0, s32 r1)
 {
-    ov30_02385C54(arg0, &r1, 4);
+    WriteBitsToDataSerializer(arg0, &r1, 4);
 }
 
 void ov30_02385DB4(struct DataSerializer *arg0, s32 r1)
 {
-    ov30_02385C54(arg0, &r1, 4);
+    WriteBitsToDataSerializer(arg0, &r1, 4);
 }
 
 void ov30_02385DD4(struct DataSerializer *arg0, u8 arg1)
@@ -2078,80 +2078,80 @@ void ov30_02385DD4(struct DataSerializer *arg0, u8 arg1)
         var_r3 = 0;
     }
     sp0 = var_r3;
-    ov30_02385C54(arg0, &sp0, 1);
+    WriteBitsToDataSerializer(arg0, &sp0, 1);
 }
 
 void ov30_02385DF8(struct DataSerializer *arg0, struct position *pos)
 {
-    ov30_02385C54(arg0, &pos->x, 1);
-    ov30_02385C54(arg0, &pos->y, 1);
+    WriteBitsToDataSerializer(arg0, &pos->x, 1);
+    WriteBitsToDataSerializer(arg0, &pos->y, 1);
 }
 
 void ov30_02385E20(struct DataSerializer *arg0, struct position *pos)
 {
-    ov30_02385C54(arg0, &pos->x, 2);
-    ov30_02385C54(arg0, &pos->y, 2);
+    WriteBitsToDataSerializer(arg0, &pos->x, 2);
+    WriteBitsToDataSerializer(arg0, &pos->y, 2);
 }
 
 
 void ov30_02385E48(struct DataSerializer *arg0, s32 *arg1)
 {
-    ov30_02385C54(arg0, arg1, 1);
-    ov30_02385C54(arg0, arg1 + 1, 1);
-    ov30_02385C54(arg0, arg1 + 2, 1);
-    ov30_02385C54(arg0, arg1 + 3, 1);
+    WriteBitsToDataSerializer(arg0, arg1, 1);
+    WriteBitsToDataSerializer(arg0, arg1 + 1, 1);
+    WriteBitsToDataSerializer(arg0, arg1 + 2, 1);
+    WriteBitsToDataSerializer(arg0, arg1 + 3, 1);
 }
 
 void ov30_02385E90(struct DataSerializer *arg0, u16 *arg1)
 {
-    ov30_02385C54(arg0, arg1, 1);
-    ov30_02385C54(arg0, arg1 + 1, 1);
+    WriteBitsToDataSerializer(arg0, arg1, 1);
+    WriteBitsToDataSerializer(arg0, arg1 + 1, 1);
 }
 
 void ov30_02385EB8(struct DataSerializer *arg0, u8 *arg1, s32 num)
 {
-    ov30_02385C54(arg0, arg1, num);
+    WriteBitsToDataSerializer(arg0, arg1, num);
 }
 
 u16 ov30_02385EC4(struct DataSerializer *arg0)
 {
     u16 sp0;
-    ov30_02385CA4(arg0, &sp0, 2);
+    ReadBitsFromDataSerializer(arg0, &sp0, 2);
     return sp0;
 }
 
 s16 ov30_02385EDC(struct DataSerializer *arg0)
 {
     s16 sp0;
-    ov30_02385CA4(arg0, &sp0, 2);
+    ReadBitsFromDataSerializer(arg0, &sp0, 2);
     return sp0;
 }
 
 u8 ov30_02385EF4(struct DataSerializer *arg0)
 {
     u8 sp0;
-    ov30_02385CA4(arg0, &sp0, 1);
+    ReadBitsFromDataSerializer(arg0, &sp0, 1);
     return sp0;
 }
 
 u32 ov30_02385F0C(struct DataSerializer *arg0)
 {
     u32 sp0;
-    ov30_02385CA4(arg0, &sp0, 4);
+    ReadBitsFromDataSerializer(arg0, &sp0, 4);
     return sp0;
 }
 
 s32 ov30_02385F24(struct DataSerializer *arg0)
 {
     s32 sp0;
-    ov30_02385CA4(arg0, &sp0, 4);
+    ReadBitsFromDataSerializer(arg0, &sp0, 4);
     return sp0;
 }
 
 s32 ov30_02385F3C(struct DataSerializer *arg0)
 {
     s32 sp0;
-    ov30_02385CA4(arg0, &sp0, 4);
+    ReadBitsFromDataSerializer(arg0, &sp0, 4);
     return sp0;
 }
 
@@ -2160,7 +2160,7 @@ u8 ov30_02385F54(struct DataSerializer *arg0)
     u8 sp0;
     u8 var_r0;
 
-    ov30_02385CA4(arg0, &sp0, 1);
+    ReadBitsFromDataSerializer(arg0, &sp0, 1);
     if (sp0 != 0) {
         var_r0 = 1;
     } else {
@@ -2174,8 +2174,8 @@ void ov30_02385F7C(struct DataSerializer *arg0, struct position *pos)
     pos->x = 0;
     pos->y = 0;
 
-    ov30_02385CA4(arg0, &pos->x, 1);
-    ov30_02385CA4(arg0, &pos->y, 1); 
+    ReadBitsFromDataSerializer(arg0, &pos->x, 1);
+    ReadBitsFromDataSerializer(arg0, &pos->y, 1);
 }
 
 void ov30_02385FB0(struct DataSerializer *arg0, struct position *pos)
@@ -2183,8 +2183,8 @@ void ov30_02385FB0(struct DataSerializer *arg0, struct position *pos)
     pos->x = 0;
     pos->y = 0;
 
-    ov30_02385CA4(arg0, &pos->x, 2);
-    ov30_02385CA4(arg0, &pos->y, 2); 
+    ReadBitsFromDataSerializer(arg0, &pos->x, 2);
+    ReadBitsFromDataSerializer(arg0, &pos->y, 2);
 }
 
 
@@ -2196,23 +2196,23 @@ void ov30_02385FE4(struct DataSerializer *arg0, s32 *arg1)
     *(arg1 + 2) = 0;
     *(arg1 + 3) = 0;
 
-    ov30_02385CA4(arg0, arg1, 1);
-    ov30_02385CA4(arg0, arg1 + 1, 1);
-    ov30_02385CA4(arg0, arg1 + 2, 1);
-    ov30_02385CA4(arg0, arg1 + 3, 1);
+    ReadBitsFromDataSerializer(arg0, arg1, 1);
+    ReadBitsFromDataSerializer(arg0, arg1 + 1, 1);
+    ReadBitsFromDataSerializer(arg0, arg1 + 2, 1);
+    ReadBitsFromDataSerializer(arg0, arg1 + 3, 1);
 }
 
 void ov30_02386040(struct DataSerializer *arg0, u16 *arg1)
 {
     *arg1 = 0;
     *(arg1 + 1) = 0;
-    ov30_02385CA4(arg0, arg1, 1);
-    ov30_02385CA4(arg0, arg1 + 1, 1);
+    ReadBitsFromDataSerializer(arg0, arg1, 1);
+    ReadBitsFromDataSerializer(arg0, arg1 + 1, 1);
 }
 
 
 void ov30_02386074(struct DataSerializer *arg0, u8 *arg1, s32 num)
 {
-    ov30_02385CA4(arg0, arg1, num);
+    ReadBitsFromDataSerializer(arg0, arg1, num);
 }
 

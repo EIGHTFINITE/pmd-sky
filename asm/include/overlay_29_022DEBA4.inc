@@ -41,6 +41,7 @@
 .public GetMaxRescueAttempts
 .public GetTopScreenOption
 .public GetTurnLimit
+.public HandleShopTransaction
 .public IncrementNbSteals
 .public InitAlertBoxInfo
 .public InitDungeonRng
@@ -120,7 +121,6 @@
 .public ov29_022EF738
 .public ov29_022EF8A4
 .public ov29_022EF9B8
-.public ov29_022F62CC
 .public ov29_022F6E40
 .public ov29_022F6EF4
 .public ov29_022F7104

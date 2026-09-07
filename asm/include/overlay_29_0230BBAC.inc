@@ -40,12 +40,12 @@
 .public FixedPoint64CmpLt
 .public FixedPoint64ToInt
 .public FixedRoomIsSubstituteRoom
+.public FlashFireShouldActivate
 .public GendersEqualNotGenderless
 .public GendersNotEqualNotGenderless
 .public GenerateStandardItem
 .public GetApparentWeather
 .public GetEquivItemIndex
-.public FlashFireShouldActivate
 .public GetItemAtIdx
 .public GetMonsterGenderVeneer
 .public GetMoveCategory
@@ -69,7 +69,6 @@
 .public NearbyAllyIqSkillIsEnabled
 .public OFFENSIVE_STAT_STAGE_MULTIPLIERS
 .public OtherMonsterAbilityIsActive
-.public ov10_022BDE50
 .public ov10_022BF964
 .public ov10_022C45B4
 .public ov29_02352838
@@ -94,6 +93,7 @@
 .public SPECIAL_BAND_STAT_BOOST
 .public SubstitutePlaceholderStringTags
 .public SUPER_LUCK_CRIT_RATE_BOOST
+.public TerminateEffectWrapper
 .public TYPE_ADVANTAGE_MASTER_CRIT_RATE
 .public TYPE_MATCHUP_COMBINATOR_TABLE
 .public UpdateStateFlags

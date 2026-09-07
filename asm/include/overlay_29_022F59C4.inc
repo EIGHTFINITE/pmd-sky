@@ -2,6 +2,7 @@
 .public _s32_div_f
 .public AllocateTemp1024ByteBufferFromPool
 .public AreMovesEnabled
+.public CanBeTalkedTo
 .public CheckTeamMemberIdxVeneer
 .public CheckVariousStatuses2__02301244
 .public DIRECTIONS_XY
@@ -40,7 +41,6 @@
 .public ov29_022E81F8
 .public ov29_022F3B8C
 .public ov29_022F6748
-.public ov29_023009CC
 .public ov29_0231AE3C
 .public ov29_02322374
 .public ov29_0233A248

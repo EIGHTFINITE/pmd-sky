@@ -742,7 +742,7 @@ _0234A26C:
 	mov r2, #0
 	bl SubstitutePlaceholderStringTags
 	mov r0, r4
-	bl ov29_023009CC
+	bl CanBeTalkedTo
 	cmp r0, #0
 	bne _0234A2A0
 #ifdef JAPAN
@@ -793,7 +793,7 @@ ov29_0234A2D4: ; 0x0234A2D4
 	mov r2, #0
 	bl SubstitutePlaceholderStringTags
 	mov r0, sl
-	bl ov29_023009CC
+	bl CanBeTalkedTo
 	cmp r0, #0
 	bne _0234A32C
 	ldr r1, _0234A5B0 ; =0x00000E27
@@ -1030,7 +1030,7 @@ ov29_0234A5E4: ; 0x0234A5E4
 	mov r2, #0
 	bl SubstitutePlaceholderStringTags
 	mov r0, r7
-	bl ov29_023009CC
+	bl CanBeTalkedTo
 	cmp r0, #0
 	bne _0234A63C
 	ldr r1, _0234A740 ; =0x00000E2E
@@ -1053,7 +1053,7 @@ _0234A65C:
 	mov r2, #0
 	bl SubstitutePlaceholderStringTags
 	mov r0, r4
-	bl ov29_023009CC
+	bl CanBeTalkedTo
 	cmp r0, #0
 	bne _0234A690
 #ifdef JAPAN
@@ -1320,7 +1320,7 @@ ov29_0234A980: ; 0x0234A980
 	bl ov29_023491B8
 	movs r5, r0
 	beq _0234AA78
-	bl ov29_023009CC
+	bl CanBeTalkedTo
 	cmp r0, #0
 	bne _0234A9DC
 	mov r0, r5

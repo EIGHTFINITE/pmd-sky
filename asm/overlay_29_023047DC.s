@@ -183,8 +183,8 @@ ov29_023049D4: ; 0x023049D4
 	ldmia sp!, {r3, pc}
 	arm_func_end ov29_023049D4
 
-	arm_func_start ov29_02304A00
-ov29_02304A00: ; 0x02304A00
+	arm_func_start MakeMonsterIdleInDirectionIfValid
+MakeMonsterIdleInDirectionIfValid: ; 0x02304A00
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	ldr r2, [r5]
@@ -203,7 +203,7 @@ ov29_02304A00: ; 0x02304A00
 	strltb r1, [r0, #0x4c]
 	strltb r1, [r5, #0xb0]
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ov29_02304A00
+	arm_func_end MakeMonsterIdleInDirectionIfValid
 
 	arm_func_start ChangeMonsterAnimationToIdle
 ChangeMonsterAnimationToIdle: ; 0x02304A48
@@ -946,7 +946,7 @@ _02305430:
 	add r0, sb, #4
 	bl DiscoverMinimap
 	mov r0, fp
-	bl ov29_022F62CC
+	bl HandleShopTransaction
 	bl CheckLeaderTile
 	b _0230547C
 _0230545C:
@@ -1001,7 +1001,7 @@ _023054E4:
 	cmpeq r1, r0
 	mov r0, sb
 	strneb r7, [r4]
-	bl ov29_022F9C74
+	bl ActivateTerrainEffects
 	mov r0, sb
 	bl EnsureCanStandCurrentTile
 _0230552C:

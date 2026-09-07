@@ -163,13 +163,13 @@ _023209A4:
 	ldr r0, [r1]
 	cmp r0, #1
 	bne _023209E8
-	ldr r2, _02320A9C ; =ov29_02353700
+	ldr r2, _02320A9C ; =EXPLOSION_FIXED_DAMAGES
 	mov r0, sl
 	ldr r5, [r2, r8, lsl #2]
 	ldr r2, [sp, #0x38]
 	mov r3, fp
 	str r5, [sp]
-	bl ov29_02320BCC
+	bl CalcAftermathExplosionDamage
 	bl IsFloorOver
 	cmp r0, #0
 	bne _023209F8
@@ -189,14 +189,14 @@ _023209F8:
 	ldr r0, _02320AA0 ; =0x0000026F
 	cmp fp, r0
 	beq _02320A3C
-	ldr r1, _02320A9C ; =ov29_02353700
+	ldr r1, _02320A9C ; =EXPLOSION_FIXED_DAMAGES
 	ldr r2, [sp, #0x38]
 	ldr r4, [r1, r8, lsl #2]
 	mov r0, sl
 	mov r1, sb
 	mov r3, fp
 	str r4, [sp]
-	bl ov29_02320BCC
+	bl CalcAftermathExplosionDamage
 _02320A3C:
 	cmp r6, #0
 	beq _02320A84
@@ -232,12 +232,12 @@ _02320A90: .word 0x00000BFC
 _02320A94: .word 0x00000BFB
 #endif
 _02320A98: .word ov29_023529B8
-_02320A9C: .word ov29_02353700
+_02320A9C: .word EXPLOSION_FIXED_DAMAGES
 _02320AA0: .word 0x0000026F
 	arm_func_end TryAftermathExplosion
 
-	arm_func_start ov29_02320AA4
-ov29_02320AA4: ; 0x02320AA4
+	arm_func_start CalcExplosionDamage
+CalcExplosionDamage: ; 0x02320AA4
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #0x24
 	mov r7, r1
@@ -325,10 +325,10 @@ _02320BC0:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _02320BC8: .word 0x00000163
-	arm_func_end ov29_02320AA4
+	arm_func_end CalcExplosionDamage
 
-	arm_func_start ov29_02320BCC
-ov29_02320BCC: ; 0x02320BCC
+	arm_func_start CalcAftermathExplosionDamage
+CalcAftermathExplosionDamage: ; 0x02320BCC
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, lr}
 	sub sp, sp, #0x24
 	mov r8, r1
@@ -421,7 +421,7 @@ _02320CFC:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
 _02320D04: .word 0x00000163
-	arm_func_end ov29_02320BCC
+	arm_func_end CalcAftermathExplosionDamage
 
 	arm_func_start TryWarp
 TryWarp: ; 0x02320D08
@@ -732,7 +732,7 @@ EnsureCanStandCurrentTile: ; 0x02321104
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	add r1, r4, #4
-	bl CannotStandOnTile__023006C8
+	bl CannotStandOnTile
 	cmp r0, #0
 	ldmeqia sp!, {r4, pc}
 	mov r0, r4
@@ -748,7 +748,7 @@ ov29_02321134: ; 0x02321134
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	add r1, r4, #4
-	bl CannotStandOnTile__02300384
+	bl CannotStandOnTileNoMonsterCheck
 	cmp r0, #0
 	ldmeqia sp!, {r4, pc}
 	mov r0, r4
@@ -766,7 +766,7 @@ ov29_02321164: ; 0x02321164
 	mov r5, r0
 	mov r0, r4
 	add r1, r4, #4
-	bl CannotStandOnTile__023006C8
+	bl CannotStandOnTile
 	cmp r0, #0
 	ldmeqia sp!, {r3, r4, r5, pc}
 	mov r0, r5
@@ -810,10 +810,10 @@ _02321200:
 	add r0, r4, #4
 	bl DiscoverMinimap
 	mov r0, #0
-	bl ov29_022F62CC
+	bl HandleShopTransaction
 _02321210:
 	mov r0, r4
-	bl ov29_022F9C74
+	bl ActivateTerrainEffects
 	ldr r1, _02321234 ; =DUNGEON_PTR
 	mov r0, r4
 	ldr r1, [r1]

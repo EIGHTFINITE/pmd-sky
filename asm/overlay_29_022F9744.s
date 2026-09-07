@@ -445,8 +445,8 @@ IsMonsterIdInNormalRangeVeneer: ; 0x022F9C68
 _022F9C70: .word IsMonsterIdInNormalRange
 	arm_func_end IsMonsterIdInNormalRangeVeneer
 
-	arm_func_start ov29_022F9C74
-ov29_022F9C74: ; 0x022F9C74
+	arm_func_start ActivateTerrainEffects
+ActivateTerrainEffects: ; 0x022F9C74
 #ifdef JAPAN
 #define OV29_022F9C74_OFFSET -4
 #else
@@ -636,7 +636,7 @@ _022F9E9C: .word 0x0000095A
 _022F9E98: .word 0x00000C1A
 _022F9E9C: .word 0x00000C1B
 #endif
-	arm_func_end ov29_022F9C74
+	arm_func_end ActivateTerrainEffects
 
 	arm_func_start ov29_022F9EA0
 ov29_022F9EA0: ; 0x022F9EA0

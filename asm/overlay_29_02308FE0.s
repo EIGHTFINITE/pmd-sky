@@ -499,7 +499,7 @@ _0230A100:
 	cmp r0, #0
 	bne _0230A0F8
 	mov r0, r6
-	bl ov10_022BDE50
+	bl TerminateEffectWrapper
 	mov r2, #0
 	str r2, [sp]
 	mov r0, #1
@@ -1603,7 +1603,7 @@ _023096D4:
 	cmp r0, #0
 	bne _023096CC
 	mov r0, sl
-	bl ov10_022BDE50
+	bl TerminateEffectWrapper
 	mov r2, #0
 	str r2, [sp]
 	mov r0, #1
