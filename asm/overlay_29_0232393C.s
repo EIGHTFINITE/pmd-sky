@@ -189,7 +189,7 @@ _02323BCC:
 	blt _02323BE0
 	mov r0, r4, lsl #0x10
 	mov r0, r0, asr #0x10
-	bl ov10_022BDE50
+	bl TerminateEffectWrapper
 _02323BE0:
 	mov r0, #1
 	bl AnimationDelayOrSomething

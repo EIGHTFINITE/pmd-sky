@@ -58,7 +58,7 @@ _022E69E0:
 	cmp r5, #0
 	blt _022E69F0
 	mov r0, r5
-	bl ov10_022BDE50
+	bl TerminateEffectWrapper
 _022E69F0:
 	add sp, sp, #0x1c
 	ldmia sp!, {r3, r4, r5, r6, pc}
@@ -293,7 +293,7 @@ _022E6CFC:
 	ldr r0, [r0, #0xc]
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
-	bl ov10_022BDE50
+	bl TerminateEffectWrapper
 _022E6D30:
 	add r4, r4, #1
 _022E6D34:

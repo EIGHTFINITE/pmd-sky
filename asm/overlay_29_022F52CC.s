@@ -395,7 +395,7 @@ _022F57F4:
 	bl GetItemCategoryVeneer
 	mov r1, r0
 	mov r0, sb
-	bl ov29_022E5728
+	bl PlayItemThrowSfx
 	mov r0, sb
 	mov r1, #0x2e
 	bl ItemIsActive__022F5994
@@ -471,7 +471,7 @@ _022F58EC:
 	bne _022F5928
 	add r0, sp, #4
 	mov r1, sb
-	bl ov29_022E9A9C
+	bl GetCurvedProjectileTargetPos
 	add r4, sp, #8
 	add r1, sp, #0xc
 	add r3, sp, #4

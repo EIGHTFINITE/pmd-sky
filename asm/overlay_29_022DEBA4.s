@@ -943,7 +943,7 @@ _022DF8E4:
 	beq _022DF90C
 	bl TryActivateArtificialWeatherAbilities
 	mov r0, #1
-	bl ov29_022F62CC
+	bl HandleShopTransaction
 	b _022DF9B0
 _022DF90C:
 	bl DisplayFloorTip

@@ -1194,7 +1194,7 @@ _02306ADC:
 	cmp r4, #0
 	beq _02306AFC
 	mov r0, #1
-	bl ov29_022F62CC
+	bl HandleShopTransaction
 _02306AFC:
 	cmp r7, #0
 	ldmneia sp!, {r4, r5, r6, r7, r8, pc}

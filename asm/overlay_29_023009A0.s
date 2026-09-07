@@ -18,8 +18,8 @@ ov29_023009A0: ; 0x023009A0
 	ldmia sp!, {r4, pc}
 	arm_func_end ov29_023009A0
 
-	arm_func_start ov29_023009CC
-ov29_023009CC: ; 0x023009CC
+	arm_func_start CanBeTalkedTo
+CanBeTalkedTo: ; 0x023009CC
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	ldr r4, [r5, #0xb4]
@@ -98,7 +98,7 @@ ov29_023009CC: ; 0x023009CC
 	moveq r0, #0
 	and r0, r0, #0xff
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ov29_023009CC
+	arm_func_end CanBeTalkedTo
 
 	arm_func_start HasStatusThatPreventsOutlawEscaping
 HasStatusThatPreventsOutlawEscaping: ; 0x02300B04

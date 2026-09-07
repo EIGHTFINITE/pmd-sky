@@ -8,6 +8,7 @@
 .public DungeonRandInt
 .public EntityIsValid__022F528C
 .public ExclusiveItemEffectFlagTest
+.public GetCurvedProjectileTargetPos
 .public GetItemCategoryVeneer
 .public GetItemToUse
 .public GetMessageLogPreprocessorArgs
@@ -19,14 +20,13 @@
 .public LogItemBlockedByEmbargo
 .public LogMessageByIdWithPopupCheckUser
 .public MonsterHasEmbargoStatus
-.public ov29_022E5728
-.public ov29_022E9A9C
 .public ov29_022EA370
 .public ov29_022EB378
 .public ov29_022F3B8C
 .public ov29_0230F9A4
 .public ov29_02346FB8
 .public ov29_02347000
+.public PlayItemThrowSfx
 .public PlaySeByIdIfShouldDisplayEntity
 .public PrepareItemForPrinting__02345728
 .public PrepareItemForPrinting__02345754

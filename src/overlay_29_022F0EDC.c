@@ -50,7 +50,7 @@ extern bool8 CanSeeTarget(struct entity *user, struct entity *target);
 extern bool8 IsBlinded(struct entity *entity, bool8 check_held_item);
 extern void MemZero(u8 *ptr, s32 len);
 extern bool8 ShouldMonsterRunAwayAndShowEffect(struct entity *monster, bool8 show_run_away_effect);
-extern s32 CannotStandOnTile__02300384();
+extern s32 CannotStandOnTileNoMonsterCheck();
 extern s32 ChangeMonsterAnimation();
 extern s32 CheckTouchscreenArea();
 extern s32 GetEntityTouchscreenArea();
@@ -871,7 +871,7 @@ void SetLeaderAction(void)
                             swap_ok = 0;
                         } else if (!ov29_0230105C(leader, lmon->action.direction)) {
                             swap_ok = 0;
-                        } else if (CannotStandOnTile__02300384(ally, &leader->pos) &&
+                        } else if (CannotStandOnTileNoMonsterCheck(ally, &leader->pos) &&
                                    YesNoMenu(0, 0xBA3 + SET_LEADER_ACTION_DATA_OFFSET, 1, 0, 0) == 2) {
                             swap_ok = 0;
                         } else {

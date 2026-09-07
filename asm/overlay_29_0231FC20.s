@@ -118,7 +118,7 @@ _0231FD1C:
 	b _0231FD1C
 _0231FDB4:
 	mov r0, sl
-	bl ov29_022F9C74
+	bl ActivateTerrainEffects
 	mov r0, sl
 	bl EnsureCanStandCurrentTile
 	mov r0, sl
@@ -371,7 +371,7 @@ _02320118:
 	cmp r0, #0
 	beq _0232014C
 	mov r0, sb
-	bl ov29_022F9C74
+	bl ActivateTerrainEffects
 	mov r0, sb
 	bl EnsureCanStandCurrentTile
 	mov r0, sb

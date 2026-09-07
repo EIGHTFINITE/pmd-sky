@@ -902,7 +902,7 @@ ov29_022F37D0: ; 0x022F37D0
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
 	mov r0, r7
-	bl ov29_023009CC
+	bl CanBeTalkedTo
 	cmp r0, #0
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
@@ -1101,7 +1101,7 @@ _022F3A6C:
 	ldr r1, _022F3AF8 ; =0x00000BA7
 	bl LogMessageByIdWithPopupCheckUser
 	mov r0, #0
-	bl ov29_022F62CC
+	bl HandleShopTransaction
 	mov r0, fp
 	mov r1, #0
 	strh r1, [sb, #0x68]
@@ -1142,7 +1142,7 @@ ov29_022F3AFC: ; 0x022F3AFC
 	moveq r0, #0
 	ldmeqia sp!, {r4, r5, r6, pc}
 	mov r0, r6
-	bl ov29_023009CC
+	bl CanBeTalkedTo
 	cmp r0, #0
 	moveq r0, #0
 	ldmeqia sp!, {r4, r5, r6, pc}
@@ -1153,7 +1153,7 @@ ov29_022F3AFC: ; 0x022F3AFC
 	moveq r0, #0
 	ldmeqia sp!, {r4, r5, r6, pc}
 	mov r0, r4
-	bl ov29_023009CC
+	bl CanBeTalkedTo
 	cmp r0, #0
 	moveq r0, #0
 	ldmeqia sp!, {r4, r5, r6, pc}
@@ -1694,7 +1694,7 @@ ov29_022F426C: ; 0x022F426C
 	ldmneia sp!, {r4, r5, r6, pc}
 	mov r0, r6
 	mov r1, r5
-	bl CannotStandOnTile__02300384
+	bl CannotStandOnTileNoMonsterCheck
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r4, r5, r6, pc}

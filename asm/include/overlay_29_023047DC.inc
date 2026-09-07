@@ -1,6 +1,7 @@
 #pragma once
 .public _s32_div_f
 .public ActivateEndOfTurnEffects
+.public ActivateTerrainEffects
 .public AdvanceFrame
 .public CheckLeaderTile
 .public CheckNonLeaderTile
@@ -17,6 +18,7 @@
 .public GetShadowSize
 .public GetSpeedOption
 .public GetTileAtEntity
+.public HandleShopTransaction
 .public IncrementEntityPixelPosXY
 .public IsFloorOver
 .public IsFloorOver2
@@ -24,8 +26,6 @@
 .public ov29_022E8104
 .public ov29_022EA370
 .public ov29_022EF9BC
-.public ov29_022F62CC
-.public ov29_022F9C74
 .public ov29_02305814
 .public ov29_02307DD0
 .public ov29_02346888

@@ -121,7 +121,7 @@ _0231EF64:
 	add r1, sp, #0x34
 	add r2, r3, r2
 	strh r2, [sp, #0x36]
-	bl ov29_022FF764
+	bl CannotMoveToTile
 	cmp r0, #0
 	bne _0231EFB8
 	ldrsh r0, [sp, #0x34]
@@ -162,7 +162,7 @@ _0231EFF8:
 	add r1, sp, #0x30
 	add r2, r3, r2
 	strh r2, [sp, #0x32]
-	bl ov29_022FF764
+	bl CannotMoveToTile
 	cmp r0, #0
 	bne _0231F074
 	ldrsh r0, [sp, #0x30]
@@ -229,7 +229,7 @@ _0231F0F4:
 	strh r0, [sp, #0x2e]
 	mov r0, r4
 	mov r1, r6
-	bl ov29_022FF764
+	bl CannotMoveToTile
 	cmp r0, #0
 	bne _0231F150
 	ldrsh r0, [sp, #0x2c]
@@ -413,7 +413,7 @@ _0231F3A4:
 	mov r1, sb
 	strh r3, [sp, #0x28]
 	strh r2, [sp, #0x2a]
-	bl ov29_022FF764
+	bl CannotMoveToTile
 	cmp r0, #0
 	bne _0231F408
 	ldrsh r0, [sp, #0x28]

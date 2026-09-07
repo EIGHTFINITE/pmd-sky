@@ -1,9 +1,11 @@
 #pragma once
 .public AbilityIsActiveVeneer
+.public ACID_PSYCHIC_LOWER_DEFENSE_CHANCE
 .public AnimationDelayOrSomething
 .public ApplyDamageAndEffectsWrapper
 .public AreEntitiesAdjacent
 .public ATK_STAT_IDX
+.public BUG_BUZZ_LOWER_SPECIAL_DEFENSE_CHANCE
 .public CalcDamage
 .public CanBeSnatched
 .public CanHitWithRegularAttack
@@ -332,8 +334,10 @@
 .public DungeonRandInt
 .public DungeonRandOutcome__022EAB20
 .public DungeonRandOutcomeUserAction
+.public EARTH_POWER_LOWER_SPECIAL_DEFENSE_CHANCE
 .public EntityIsValid__0232E840
 .public ExclusiveItemEffectIsActive__023329E8
+.public FLASH_CANNON_LOWER_SPECIAL_DEFENSE_CHANCE
 .public FOREWARN_FORCED_MISS_CHANCE
 .public GetDamageSourceWrapper
 .public GetDirectionTowardsPosition
@@ -366,12 +370,7 @@
 .public MonsterCannotAttack
 .public MoveHitCheck
 .public ov10_022BFD6C
-.public EARTH_POWER_LOWER_SPECIAL_DEFENSE_CHANCE
-.public SEED_FLARE_LOWER_SPECIAL_DEFENSE_CHANCE
-.public FLASH_CANNON_LOWER_SPECIAL_DEFENSE_CHANCE
 .public ov10_022C45F8
-.public ACID_PSYCHIC_LOWER_DEFENSE_CHANCE
-.public BUG_BUZZ_LOWER_SPECIAL_DEFENSE_CHANCE
 .public ov10_022C483C
 .public ov29_022E3FCC
 .public ov29_022E4110
@@ -401,6 +400,7 @@
 .public PlaySeByIdIfShouldDisplayEntity
 .public PrepareItemForPrinting__02345728
 .public ROLLOUT_ICE_BALL_MISSED
+.public SEED_FLARE_LOWER_SPECIAL_DEFENSE_CHANCE
 .public SetPreprocessorArgsStringToName
 .public ShouldDisplayEntityWrapper
 .public SPATK_STAT_IDX

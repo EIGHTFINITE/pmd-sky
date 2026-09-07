@@ -736,13 +736,13 @@ _02323830:
 	blt _02323848
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
-	bl ov10_022BDE50
+	bl TerminateEffectWrapper
 _02323848:
 	cmp r5, #0
 	blt _0232385C
 	mov r0, r5, lsl #0x10
 	mov r0, r0, asr #0x10
-	bl ov10_022BDE50
+	bl TerminateEffectWrapper
 _0232385C:
 	mov r0, #0
 	bl ov29_0234B4CC

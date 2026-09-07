@@ -27,7 +27,6 @@
 .public MALE_ACCURACY_STAGE_MULTIPLIERS
 .public MALE_EVASION_STAGE_MULTIPLIERS
 .public MoveIsNotPhysical
-.public ov10_022BDE50
 .public ov10_022BEB2C
 .public ov29_022E2CA0
 .public ov29_022EA370
@@ -42,4 +41,5 @@
 .public PositionHasMonster
 .public QUICK_DODGER_MOVE_ACCURACY_DROP
 .public SinAbs4096
+.public TerminateEffectWrapper
 .public TwoTurnMoveForcedMiss

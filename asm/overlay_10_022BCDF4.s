@@ -1055,8 +1055,8 @@ ov10_022BDBB0: ; 0x022BDBB0
 _022BDBC4: .word ov10_022DC1C0
 	arm_func_end ov10_022BDBB0
 
-	arm_func_start ov10_022BDBC8
-ov10_022BDBC8: ; 0x022BDBC8
+	arm_func_start TerminateAllEffects
+TerminateAllEffects: ; 0x022BDBC8
 	stmdb sp!, {r4, r5, r6, lr}
 	ldr r0, _022BDC08 ; =ov10_022DC1C0
 	mov r6, #0
@@ -1068,7 +1068,7 @@ _022BDBDC:
 	beq _022BDBF4
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
-	bl ov10_022BDE50
+	bl TerminateEffectWrapper
 _022BDBF4:
 	add r6, r6, #1
 	cmp r6, #0x20
@@ -1077,12 +1077,12 @@ _022BDBF4:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _022BDC08: .word ov10_022DC1C0
-	arm_func_end ov10_022BDBC8
+	arm_func_end TerminateAllEffects
 
 	arm_func_start ov10_022BDC0C
 ov10_022BDC0C: ; 0x022BDC0C
 	stmdb sp!, {r3, lr}
-	bl ov10_022BDBC8
+	bl TerminateAllEffects
 	ldr r0, _022BDC60 ; =ov10_022DC1C0
 	ldr r1, _022BDC64 ; =WAN_TABLE
 	ldr r2, [r0]
@@ -1111,7 +1111,7 @@ _022BDC64: .word WAN_TABLE
 	arm_func_start ov10_022BDC68
 ov10_022BDC68: ; 0x022BDC68
 	stmdb sp!, {r3, lr}
-	bl ov10_022BDBC8
+	bl TerminateAllEffects
 	ldr r0, _022BDCA0 ; =ov10_022DC1C0
 	mov r2, #0
 	ldr r1, [r0]
@@ -1139,11 +1139,11 @@ ov10_022BDCA4: ; 0x022BDCA4
 	bx lr
 	arm_func_end ov10_022BDCA4
 
-	arm_func_start ov10_022BDCBC
-ov10_022BDCBC: ; 0x022BDCBC
+	arm_func_start TerminateEffect
+TerminateEffect: ; 0x022BDCBC
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r1
-	bl ov10_022BE9A0
+	bl GetLiveEffectIdx
 	mvn r1, #0
 	cmp r0, r1
 	ldmeqia sp!, {r4, r5, r6, pc}
@@ -1251,13 +1251,13 @@ _022BDE34:
 _022BDE44: .word ov10_022DC1C0
 _022BDE48: .word ov10_022C79D8
 _022BDE4C: .word ov10_022C7A18
-	arm_func_end ov10_022BDCBC
+	arm_func_end TerminateEffect
 
-	arm_func_start ov10_022BDE50
-ov10_022BDE50: ; 0x022BDE50
+	arm_func_start TerminateEffectWrapper
+TerminateEffectWrapper: ; 0x022BDE50
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl ov10_022BE9A0
+	bl GetLiveEffectIdx
 	mvn r2, #0
 	cmp r0, r2
 	ldmeqia sp!, {r4, pc}
@@ -1274,15 +1274,15 @@ ov10_022BDE50: ; 0x022BDE50
 	mov r0, r4
 	bhi _022BDEA4
 	mov r1, #0
-	bl ov10_022BDCBC
+	bl TerminateEffect
 	ldmia sp!, {r4, pc}
 _022BDEA4:
 	mov r1, #1
-	bl ov10_022BDCBC
+	bl TerminateEffect
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _022BDEB0: .word ov10_022DC1C0
-	arm_func_end ov10_022BDE50
+	arm_func_end TerminateEffectWrapper
 
 	arm_func_start GetEffectAnimationWanOffset
 GetEffectAnimationWanOffset: ; 0x022BDEB4
@@ -1369,8 +1369,8 @@ _022BDFB4:
 _022BDFBC: .word ov10_022DC1C0
 	arm_func_end ov10_022BDF34
 
-	arm_func_start ov10_022BDFC0
-ov10_022BDFC0: ; 0x022BDFC0
+	arm_func_start PlayEffect
+PlayEffect: ; 0x022BDFC0
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	sub sp, sp, #0x10
 	mov r7, r0
@@ -1683,7 +1683,7 @@ _022BE440:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _022BE448: .word ov10_022DC1C0
-	arm_func_end ov10_022BDFC0
+	arm_func_end PlayEffect
 
 	arm_func_start ov10_022BE44C
 ov10_022BE44C: ; 0x022BE44C
@@ -1901,14 +1901,14 @@ ov10_022BE730: ; 0x022BE730
 	ldmeqia sp!, {r4, pc}
 	mov r0, r4, lsl #0x10
 	mov r0, r0, asr #0x10
-	bl ov10_022BE9A0
+	bl GetLiveEffectIdx
 	mov r1, #0x13c
 	ldr r2, _022BE77C ; =ov10_022DC1C0
 	mul r3, r0, r1
 	ldr r0, [r2]
 	ldr r1, [r0, r3]
 	add r0, r0, r3
-	bl ov10_022BDFC0
+	bl PlayEffect
 	mov r0, r4, lsl #0x10
 	mov r0, r0, asr #0x10
 	ldmia sp!, {r4, pc}
@@ -2068,8 +2068,8 @@ _022BE998: .word ov10_022DC1C0
 _022BE99C: .word 0x00000287
 	arm_func_end ov10_022BE780
 
-	arm_func_start ov10_022BE9A0
-ov10_022BE9A0: ; 0x022BE9A0
+	arm_func_start GetLiveEffectIdx
+GetLiveEffectIdx: ; 0x022BE9A0
 	mvn r1, #0
 	cmp r0, r1
 	beq _022BE9DC
@@ -2092,7 +2092,7 @@ _022BE9DC:
 	bx lr
 	.align 2, 0
 _022BE9E4: .word ov10_022DC1C0
-	arm_func_end ov10_022BE9A0
+	arm_func_end GetLiveEffectIdx
 
 	arm_func_start ov10_022BE9E8
 ov10_022BE9E8: ; 0x022BE9E8
@@ -2148,7 +2148,7 @@ _022BEA78:
 	beq _022BEB18
 	mov r0, r4, lsl #0x10
 	mov r0, r0, asr #0x10
-	bl ov10_022BE9A0
+	bl GetLiveEffectIdx
 	mvn r1, #0
 	cmp r0, r1
 	moveq r0, r1
@@ -2188,7 +2188,7 @@ ov10_022BEB2C: ; 0x022BEB2C
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r1
 	mov r5, r2
-	bl ov10_022BE9A0
+	bl GetLiveEffectIdx
 	mvn r1, #0
 	cmp r0, r1
 	ldmeqia sp!, {r4, r5, r6, pc}
@@ -2445,7 +2445,7 @@ _022BEEA0:
 	mov r4, r0
 	mov r0, r4, lsl #0x10
 	mov r0, r0, asr #0x10
-	bl ov10_022BE9A0
+	bl GetLiveEffectIdx
 	mvn r1, #0
 	cmp r0, r1
 	beq _022BEEFC
@@ -2522,7 +2522,7 @@ _022BEFD4: .word ov10_022C7954
 	arm_func_start ov10_022BEFD8
 ov10_022BEFD8: ; 0x022BEFD8
 	stmdb sp!, {r3, lr}
-	bl ov10_022BE9A0
+	bl GetLiveEffectIdx
 	mvn r1, #0
 	cmp r0, r1
 	beq _022BF000
@@ -2784,7 +2784,7 @@ ov10_022BF314: ; 0x022BF314
 	cmp r0, r1
 	moveq r0, #0
 	ldmeqia sp!, {r3, pc}
-	bl ov10_022BE9A0
+	bl GetLiveEffectIdx
 	ldr r2, _022BF358 ; =ov10_022DC1C0
 	mov r1, #0x13c
 	ldr r2, [r2]
@@ -2815,7 +2815,7 @@ ov10_022BF35C: ; 0x022BF35C
 	ldmia sp!, {r4, pc}
 _022BF388:
 	ldr r1, [r0]
-	bl ov10_022BDFC0
+	bl PlayEffect
 	ldmia sp!, {r4, pc}
 	arm_func_end ov10_022BF35C
 
@@ -2889,7 +2889,7 @@ ov10_022BF45C: ; 0x022BF45C
 	mov r6, r1
 	mov r5, r2
 	mov r4, r3
-	bl ov10_022BE9A0
+	bl GetLiveEffectIdx
 	mvn r1, #0
 	cmp r0, r1
 	ldmeqia sp!, {r4, r5, r6, pc}
@@ -2926,8 +2926,8 @@ _022BF4E8: .word ov10_022DC1C0
 _022BF4EC: .word 0x0000FFFF
 	arm_func_end ov10_022BF45C
 
-	arm_func_start ov10_022BF4F0
-ov10_022BF4F0: ; 0x022BF4F0
+	arm_func_start DisplayEffect
+DisplayEffect: ; 0x022BF4F0
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r6, r0
 	ldr r3, [r6, #0xc]
@@ -2964,14 +2964,14 @@ _022BF53C:
 	mov r1, #1
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
-	bl ov10_022BDCBC
+	bl TerminateEffect
 	b _022BF6D4
 _022BF580:
 	ldr r0, [r6, #0xc]
 	mov r1, #0
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
-	bl ov10_022BDCBC
+	bl TerminateEffect
 	b _022BF6D4
 _022BF598:
 	add r0, r6, #0x68
@@ -3098,7 +3098,7 @@ _022BF750:
 _022BF758: .word ov10_022C7870
 _022BF75C: .word 0x0000FFFF
 _022BF760: .word ov10_022DC1C0
-	arm_func_end ov10_022BF4F0
+	arm_func_end DisplayEffect
 
 	arm_func_start ov10_022BF764
 ov10_022BF764: ; 0x022BF764
@@ -3122,7 +3122,7 @@ ov10_022BF764: ; 0x022BF764
 _022BF7A8:
 	mov r0, r6
 	mov r1, r4
-	bl ov10_022BF4F0
+	bl DisplayEffect
 	add r5, r5, #1
 	cmp r5, #0x20
 	add r6, r6, #0x13c
@@ -3169,7 +3169,7 @@ _022BF824:
 	beq _022BF844
 	mov r0, r5
 	mov r1, r6
-	bl ov10_022BF4F0
+	bl DisplayEffect
 	mov r4, r0
 _022BF844:
 	add r7, r7, #1
@@ -3209,7 +3209,7 @@ _022BF8A8:
 	beq _022BF8C8
 	mov r0, r5
 	mov r1, r6
-	bl ov10_022BF4F0
+	bl DisplayEffect
 	mov r4, r0
 _022BF8C8:
 	add r7, r7, #1
@@ -3270,7 +3270,7 @@ _022BF960: .word ov10_022DC1C0
 	arm_func_start ov10_022BF964
 ov10_022BF964: ; 0x022BF964
 	stmdb sp!, {r3, lr}
-	bl ov10_022BE9A0
+	bl GetLiveEffectIdx
 	mvn r1, #0
 	cmp r0, r1
 	beq _022BF9C0
@@ -3432,7 +3432,7 @@ ov10_022BFB6C: ; 0x022BFB6C
 	mov r6, r1
 	mov r5, r2
 	mov r4, r3
-	bl ov10_022BE9A0
+	bl GetLiveEffectIdx
 	mvn r1, #0
 	cmp r0, r1
 	beq _022BFC4C

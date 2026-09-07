@@ -207,7 +207,7 @@ ov29_02302CC8: ; 0x02302CC8
 	add r1, sp, #0x18
 	mov r0, sb
 	str r1, [r8, #0x38]
-	bl ov29_023009CC
+	bl CanBeTalkedTo
 	cmp r0, #0
 	beq _02302DBC
 	mov r0, sb

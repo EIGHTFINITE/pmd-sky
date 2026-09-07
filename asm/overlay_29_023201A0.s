@@ -11,7 +11,7 @@ ov29_023201A0: ; 0x023201A0
 	cmp r0, #0
 	ldmeqia sp!, {r4, pc}
 	mov r0, r4
-	bl ov29_022F9C74
+	bl ActivateTerrainEffects
 	mov r0, r4
 	bl EnsureCanStandCurrentTile
 	mov r0, r4
@@ -356,13 +356,13 @@ _02320664:
 	ldr r0, [r1]
 	cmp r0, #1
 	bne _023206A8
-	ldr r2, _0232075C ; =ov29_02353700
+	ldr r2, _0232075C ; =EXPLOSION_FIXED_DAMAGES
 	mov r0, sl
 	ldr r5, [r2, r8, lsl #2]
 	ldr r2, [sp, #0x38]
 	mov r3, fp
 	str r5, [sp]
-	bl ov29_02320AA4
+	bl CalcExplosionDamage
 	bl IsFloorOver
 	cmp r0, #0
 	bne _023206B8
@@ -382,14 +382,14 @@ _023206B8:
 	ldr r0, _02320760 ; =0x0000026F
 	cmp fp, r0
 	beq _023206FC
-	ldr r1, _0232075C ; =ov29_02353700
+	ldr r1, _0232075C ; =EXPLOSION_FIXED_DAMAGES
 	ldr r2, [sp, #0x38]
 	ldr r4, [r1, r8, lsl #2]
 	mov r0, sl
 	mov r1, sb
 	mov r3, fp
 	str r4, [sp]
-	bl ov29_02320AA4
+	bl CalcExplosionDamage
 _023206FC:
 	cmp r6, #0
 	beq _02320744
@@ -425,6 +425,6 @@ _02320750: .word 0x00000BFC
 _02320754: .word 0x00000BFB
 #endif
 _02320758: .word ov29_023529B8
-_0232075C: .word ov29_02353700
+_0232075C: .word EXPLOSION_FIXED_DAMAGES
 _02320760: .word 0x0000026F
 	arm_func_end TryExplosion

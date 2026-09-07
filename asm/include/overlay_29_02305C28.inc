@@ -15,6 +15,7 @@
 .public GetIdleAnimationId
 .public GetMonsterApparentId
 .public GetType
+.public HandleShopTransaction
 .public IsProtectedFromNegativeStatus
 .public ItemIsActive__02307F1C
 .public LogMessageByIdWithPopupCheckUser
@@ -26,7 +27,6 @@
 .public ov29_022E543C
 .public ov29_022E65F4
 .public ov29_022E6798
-.public ov29_022F62CC
 .public ov29_022FA1D8
 .public ov29_022FB984
 .public ov29_02304830

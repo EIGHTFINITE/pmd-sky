@@ -1,6 +1,7 @@
 #pragma once
 .public _020A1878
 .public AdvanceFrame
+.public CanBeTalkedTo
 .public CanSeeTarget
 .public ClearMissionDestinationInfo
 .public DisplayMessage
@@ -36,7 +37,6 @@
 .public ov29_022E0DFC
 .public ov29_022E0E44
 .public ov29_022FB9BC
-.public ov29_023009CC
 .public ov29_02344B9C
 .public ov29_023497C8
 .public ov29_02349818

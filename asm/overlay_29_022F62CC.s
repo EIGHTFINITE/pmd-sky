@@ -3,8 +3,8 @@
 
 	.text
 
-	arm_func_start ov29_022F62CC
-ov29_022F62CC: ; 0x022F62CC
+	arm_func_start HandleShopTransaction
+HandleShopTransaction: ; 0x022F62CC
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x28
 	mov sl, r0
@@ -72,7 +72,7 @@ _022F6388:
 	cmp r0, #1
 	bne _022F63D8
 	mov r0, sb
-	bl ov29_023009CC
+	bl CanBeTalkedTo
 	cmp r0, #0
 	beq _022F63D8
 	ldrb r1, [r4, #0x25]
@@ -94,7 +94,7 @@ _022F63D8:
 	cmp r6, #0
 	beq _022F66F4
 	mov r0, r4
-	bl ov29_022F6210
+	bl GetShopkeeperIfTalkable
 	movs r5, r0
 	beq _022F6434
 	add r0, r5, #4
@@ -146,7 +146,7 @@ _022F648C:
 	cmp r0, #1
 	bne _022F6614
 	mov r0, sl
-	bl ov29_023009CC
+	bl CanBeTalkedTo
 	cmp r0, #0
 	beq _022F6614
 	ldrb r1, [r4, #0x25]
@@ -201,7 +201,7 @@ _022F6548:
 	beq _022F65B4
 	mov r0, sl
 	add r1, sp, #0x14
-	bl ov29_022FF764
+	bl CannotMoveToTile
 	cmp r0, #0
 	bne _022F65B4
 	add r3, sp, #0x14
@@ -221,7 +221,7 @@ _022F65C4:
 	ble _022F6540
 _022F65CC:
 	mov r0, r4
-	bl ov29_023009CC
+	bl CanBeTalkedTo
 	cmp r0, #0
 	moveq r7, #0
 	beq _022F65F8
@@ -230,7 +230,7 @@ _022F65CC:
 	bl GetDirectionTowardsPosition
 	mov r1, r0
 	mov r0, r4
-	bl ov29_02304A00
+	bl MakeMonsterIdleInDirectionIfValid
 _022F65F8:
 	add r0, sl, #4
 	add r1, r4, #4
@@ -256,7 +256,7 @@ _022F6620:
 	ldr r0, [r0, #0x7bc]
 	cmp r1, r0
 	ble _022F66F4
-	bl ov29_022F6CAC
+	bl TriggerThiefAlert
 	b _022F66F4
 _022F6654:
 	ldr r0, [sp]
@@ -270,16 +270,16 @@ _022F6654:
 	ldr r0, [r0, #0x7bc]
 	cmp r1, r0
 	ble _022F66F4
-	bl ov29_022F6CAC
+	bl TriggerThiefAlert
 	b _022F66F4
 _022F6688:
 	mov r0, r7
 	bl ov29_022F67D0
 	mov r0, r7
-	bl ov29_022F6A0C
+	bl TryBuyFromShop
 	cmp r0, #0
 	beq _022F66A8
-	bl ov29_022F6CAC
+	bl TriggerThiefAlert
 	b _022F66F4
 _022F66A8:
 	cmp fp, #1
@@ -288,7 +288,7 @@ _022F66A8:
 	cmp r6, #0
 	beq _022F66F4
 	mov r0, r4
-	bl ov29_022F6210
+	bl GetShopkeeperIfTalkable
 	movs r5, r0
 	beq _022F66E4
 	add r0, r5, #4
@@ -316,7 +316,7 @@ _022F6700: .word 0x00000E53
 _022F6704: .word ov29_02352760
 _022F6708: .word 0x00000E52
 #endif
-	arm_func_end ov29_022F62CC
+	arm_func_end HandleShopTransaction
 
 	arm_func_start ov29_022F670C
 ov29_022F670C: ; 0x022F670C
@@ -350,7 +350,7 @@ ov29_022F6748: ; 0x022F6748
 	mov r0, #1
 	bl ov29_022F67D0
 	mov r0, #1
-	bl ov29_022F6A0C
+	bl TryBuyFromShop
 	movs r4, r0
 	beq _022F67B4
 	bl GetLeader
@@ -366,7 +366,7 @@ ov29_022F6748: ; 0x022F6748
 	bl DisplayMessage2
 	b _022F67C4
 _022F67AC:
-	bl ov29_022F6CAC
+	bl TriggerThiefAlert
 	b _022F67C4
 _022F67B4:
 #ifdef JAPAN
@@ -555,8 +555,8 @@ _022F6A04: .word ov29_02352760
 _022F6A08: .word 0x00000E4A + OV29_022F67D0_DATA_OFFSET
 	arm_func_end ov29_022F67D0
 
-	arm_func_start ov29_022F6A0C
-ov29_022F6A0C: ; 0x022F6A0C
+	arm_func_start TryBuyFromShop
+TryBuyFromShop: ; 0x022F6A0C
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, lr}
 	sub sp, sp, #0x14
 	mov r5, r0
@@ -755,10 +755,10 @@ _022F6C9C: .word 0x00000E4B + OV29_022F6A0C_OFFSET
 _022F6CA0: .word 0x00001308
 _022F6CA4: .word BAG_ITEMS_PTR_MIRROR
 _022F6CA8: .word 0x00000E49 + OV29_022F6A0C_OFFSET
-	arm_func_end ov29_022F6A0C
+	arm_func_end TryBuyFromShop
 
-	arm_func_start ov29_022F6CAC
-ov29_022F6CAC: ; 0x022F6CAC
+	arm_func_start TriggerThiefAlert
+TriggerThiefAlert: ; 0x022F6CAC
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	ldr r0, _022F6E0C ; =DUNGEON_PTR
 	mov r2, #1
@@ -865,7 +865,7 @@ _022F6E10: .word 0x00000B96
 _022F6E10: .word 0x00000E54
 #endif
 _022F6E14: .word BAG_ITEMS_PTR_MIRROR
-	arm_func_end ov29_022F6CAC
+	arm_func_end TriggerThiefAlert
 
 	arm_func_start ResetDamageData
 ResetDamageData: ; 0x022F6E18

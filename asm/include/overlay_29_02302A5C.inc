@@ -1,6 +1,7 @@
 #pragma once
 .public AddSimpleObjToOam
 .public AllocateTemp1024ByteBufferFromPool
+.public CanBeTalkedTo
 .public ChangeMonsterAnimation
 .public CopyStatusIconFlags
 .public DIRECTIONS_XY
@@ -55,7 +56,6 @@
 .public ov29_022EAC9C
 .public ov29_022EBCE8
 .public ov29_022ECB38
-.public ov29_023009CC
 .public ov29_02304830
 .public ov29_0234B4E0
 .public ov29_0234CFA0

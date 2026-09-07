@@ -139,7 +139,7 @@ _02383170:
 	strh r1, [sp, #0x10]
 	str ip, [sp]
 	ldr r1, _02383240 ; =0x00001812
-	ldr r3, _02383244 ; =ov31_02383248
+	ldr r3, _02383244 ; =StairsDescriptionCallback
 	add r2, sp, #8
 	str ip, [sp, #4]
 	bl CreateAdvancedTextBox
@@ -180,12 +180,12 @@ _02383234: .word StairsSubheadingCallback
 _02383238: .word ov29_0237C91C
 _0238323C: .word DUNGEON_WINDOW_PARAMS_5
 _02383240: .word 0x00001812
-_02383244: .word ov31_02383248
+_02383244: .word StairsDescriptionCallback
 	arm_func_end HandleStairsMenu
 
 ; https://decomp.me/scratch/VPa2L
-	arm_func_start ov31_02383248
-ov31_02383248: ; 0x02383248
+	arm_func_start StairsDescriptionCallback
+StairsDescriptionCallback: ; 0x02383248
 	stmdb sp!, {r4, lr}
 	ldr r1, _02383284 ; =ov31_0238A2A0
 	ldr r2, _02383288 ; =OVERLAY31_UNKNOWN_STRING_IDS
@@ -204,7 +204,7 @@ ov31_02383248: ; 0x02383248
 	.align 2, 0
 _02383284: .word ov31_0238A2A0
 _02383288: .word OVERLAY31_UNKNOWN_STRING_IDS
-	arm_func_end ov31_02383248
+	arm_func_end StairsDescriptionCallback
 
 ; https://decomp.me/scratch/oWQ5d
 	arm_func_start CloseMainStairsMenu

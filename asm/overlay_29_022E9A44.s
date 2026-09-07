@@ -34,8 +34,8 @@ ov29_022E9A6C: ; 0x022E9A6C
 _022E9A98: .word 0x00007530
 	arm_func_end ov29_022E9A6C
 
-	arm_func_start ov29_022E9A9C
-ov29_022E9A9C: ; 0x022E9A9C
+	arm_func_start GetCurvedProjectileTargetPos
+GetCurvedProjectileTargetPos: ; 0x022E9A9C
 #ifdef JAPAN
 #define OV29_022E9A9C_OFFSET -0xA4
 #else
@@ -187,7 +187,7 @@ _022E9CA8: .word DUNGEON_PTR
 _022E9CAC: .word ov29_0235179C
 _022E9CB0: .word ov29_023517A0
 _022E9CB4: .word ov29_023517A2
-	arm_func_end ov29_022E9A9C
+	arm_func_end GetCurvedProjectileTargetPos
 
 	arm_func_start ov29_022E9CB8
 ov29_022E9CB8: ; 0x022E9CB8

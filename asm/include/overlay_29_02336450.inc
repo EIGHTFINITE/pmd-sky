@@ -1,5 +1,5 @@
 #pragma once
-.public CannotStandOnTile__02300384
+.public CannotStandOnTileNoMonsterCheck
 .public CanSeePosition
 .public Debug_Print0
 .public DEFAULT_TILE

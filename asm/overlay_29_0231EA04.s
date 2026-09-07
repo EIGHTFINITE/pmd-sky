@@ -268,7 +268,7 @@ _0231ED58:
 	cmp r0, #0
 	beq _0231ED98
 	mov r0, r5
-	bl ov29_022F9C74
+	bl ActivateTerrainEffects
 	mov r0, r5
 	bl EntityIsValid__0231EDD8
 	cmp r0, #0
