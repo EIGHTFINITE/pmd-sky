@@ -48,11 +48,11 @@ void ov30_02384CD4(void *buffer);
 void ov30_02384E28(void *arg0, s32 arg1, s32 index);
 struct entity* ov30_023859DC(s16 id, s16 apparent_id, s32 monster_slot_index);
 struct entity* ov30_02385B10(s16 id, s16 apparent_id, s32 monster_slot_index);
-void ov30_02385C3C(struct DataSerializer *r0, u8 *r1, s32 r2); // InitBitWriter
-void ov30_02385C54(struct DataSerializer* r0, const void* src, s32 numBits); // WriteBits
-void ov30_02385C8C(struct DataSerializer *r0, u8 *r1, s32 r2); // InitBitReader
-void ov30_02385CA4(struct DataSerializer* r0, void* src, s32 numBits); // ReadBits
-void FinishBitSerializer(struct DataSerializer *r0);
+void InitDataSerializerWriter(struct DataSerializer *r0, u8 *r1, s32 r2);
+void WriteBitsToDataSerializer(struct DataSerializer* r0, const void* src, s32 numBits);
+void InitDataSerializerReader(struct DataSerializer *r0, u8 *r1, s32 r2);
+void ReadBitsFromDataSerializer(struct DataSerializer* r0, void* src, s32 numBits);
+void FinishDataSerializer(struct DataSerializer *r0);
 void ov30_02385CE0(struct DataSerializer *arg0, const void *string);
 void ov30_02385CF0(struct DataSerializer *arg0, const void *string);
 void ov30_02385D14(struct DataSerializer *arg0, u16 r1);
