@@ -880,7 +880,7 @@
                                                                                                                  112](HasDropeyeStatus,func) found in global dungeon_pokemon_attributes_1.o
                                                                                                                  112](IsPositionActuallyInSight,func) found in global dungeon_range.o
                                                                                                                   113](GetVisibilityRange,func) found in global dg_camera.o
-                                                                                                                111](ov29_023009CC,func) found in global overlay_29_023009A0.o
+                                                                                                                111](CanBeTalkedTo,func) found in global overlay_29_023009A0.o
                                                                                                                  112](IsChargingAnyTwoTurnMove,func) found in global dungeon_move.o
                                                                                                                   113](TWO_TURN_STATUSES,object) found in global dungeon_move.o
                                                                                                                 111](SetMessageLogPreprocessorArgsFlagVal,func) found in global overlay_29_0234B024.o
@@ -1103,7 +1103,7 @@
                                                                                                                                            138](ov29_022E3F74,func) found in global overlay_29_022E3F20.o
                                                                                                                                           137](TryExplosion,func) found in global overlay_29_023201A0.o
                                                                                                                                            138](ov29_023529B8,notype) found in global overlay_29_rodata_02352894.o
-                                                                                                                                           138](ov29_02320AA4,func) found in global overlay_29_02320788.o
+                                                                                                                                           138](CalcExplosionDamage,func) found in global overlay_29_02320788.o
                                                                                                                                            138](EntityIsValid__02320764,func) found in global overlay_29_02320764.o
                                                                                                                                            138](UpdateEntityPixelPos,func) found in global dg_object.o
                                                                                                                                            138](MoveMonsterToPos,func) found in global overlay_29_022F7768.o
@@ -1253,7 +1253,7 @@
                                                                                                                                                 143](IsCherrim,func) found in global main_02054AA4.o
                                                                                                                                                 143](IsCastform,func) found in global main_02054AA4.o
                                                                                                                                                 143](sub_020018A4,func) found in global main_02001894.o
-                                                                                                                                                143](ov29_022F6210,func) found in global overlay_29_022F59C4.o
+                                                                                                                                                143](GetShopkeeperIfTalkable,func) found in global overlay_29_022F59C4.o
                                                                                                                                                142](TryHurl,func) found in global overlay_29_0231EDFC.o
                                                                                                                                                 143](EntityIsValid__0231F570,func) found in global overlay_29_0231F570.o
                                                                                                                                                 143](ov29_022E9298,func) found in global overlay_29_022E9298.o
@@ -2239,8 +2239,8 @@
                                                                    66](IsMonster__0234D460,func) found in global overlay_29_0234D460.o
                                                                    66](IsFutureDungeon,func) found in global main_020514CC.o
                                                                    66](ov30_023842F4,func) found in global overlay_30_init.o
-                                                                    67](ov30_02385C8C,func) found in global overlay_30_init.o
-                                                                    67](ov30_02385CA4,func) found in global overlay_30_init.o
+                                                                    67](InitDataSerializerReader,func) found in global overlay_30_init.o
+                                                                    67](ReadBitsFromDataSerializer,func) found in global overlay_30_init.o
                                                                     67](ov30_02385CF0,func) found in global overlay_30_init.o
                                                                     67](ov30_02385EDC,func) found in global overlay_30_init.o
                                                                     67](ov30_02385EC4,func) found in global overlay_30_init.o
@@ -2269,10 +2269,10 @@
                                                                       69](ov30_02385F24,func) found in global overlay_30_init.o
                                                                       69](ov30_023859DC,func) found in global overlay_30_init.o
                                                                       69](ov30_02385B10,func) found in global overlay_30_init.o
-                                                                    67](FinishBitSerializer,func) found in global overlay_30_init.o
+                                                                    67](FinishDataSerializer,func) found in global overlay_30_init.o
                                                                    66](WriteQuicksaveData,func) found in global overlay_30_init.o
-                                                                    67](ov30_02385C3C,func) found in global overlay_30_init.o
-                                                                    67](ov30_02385C54,func) found in global overlay_30_init.o
+                                                                    67](InitDataSerializerWriter,func) found in global overlay_30_init.o
+                                                                    67](WriteBitsToDataSerializer,func) found in global overlay_30_init.o
                                                                     67](ov30_02385CE0,func) found in global overlay_30_init.o
                                                                     67](ov30_02385D34,func) found in global overlay_30_init.o
                                                                     67](ov30_02385D14,func) found in global overlay_30_init.o
@@ -28814,7 +28814,7 @@
   022BE4F0 00000000 .text   $a	(overlay_10_022BCDF4.o)
   022BE4F0 00000018 .text   ov10_022BDBB0	(overlay_10_022BCDF4.o)
   022BE504 00000000 .text   $d	(overlay_10_022BCDF4.o)
-  022BE508 00000044 .text   ov10_022BDBC8	(overlay_10_022BCDF4.o)
+  022BE508 00000044 .text   TerminateAllEffects	(overlay_10_022BCDF4.o)
   022BE508 00000000 .text   $a	(overlay_10_022BCDF4.o)
   022BE548 00000000 .text   $d	(overlay_10_022BCDF4.o)
   022BE54C 0000005C .text   ov10_022BDC0C	(overlay_10_022BCDF4.o)
@@ -28825,9 +28825,9 @@
   022BE5E0 00000000 .text   $d	(overlay_10_022BCDF4.o)
   022BE5E4 00000018 .text   ov10_022BDCA4	(overlay_10_022BCDF4.o)
   022BE5E4 00000000 .text   $a	(overlay_10_022BCDF4.o)
-  022BE5FC 00000194 .text   ov10_022BDCBC	(overlay_10_022BCDF4.o)
+  022BE5FC 00000194 .text   TerminateEffect	(overlay_10_022BCDF4.o)
   022BE784 00000000 .text   $d	(overlay_10_022BCDF4.o)
-  022BE790 00000064 .text   ov10_022BDE50	(overlay_10_022BCDF4.o)
+  022BE790 00000064 .text   TerminateEffectWrapper	(overlay_10_022BCDF4.o)
   022BE790 00000000 .text   $a	(overlay_10_022BCDF4.o)
   022BE7F0 00000000 .text   $d	(overlay_10_022BCDF4.o)
   022BE7F4 00000010 .text   GetEffectAnimationWanOffset	(overlay_10_022BCDF4.o)
@@ -28838,7 +28838,7 @@
   022BE874 0000008C .text   ov10_022BDF34	(overlay_10_022BCDF4.o)
   022BE8FC 00000000 .text   $d	(overlay_10_022BCDF4.o)
   022BE900 00000000 .text   $a	(overlay_10_022BCDF4.o)
-  022BE900 0000048C .text   ov10_022BDFC0	(overlay_10_022BCDF4.o)
+  022BE900 0000048C .text   PlayEffect	(overlay_10_022BCDF4.o)
   022BED88 00000000 .text   $d	(overlay_10_022BCDF4.o)
   022BED8C 00000000 .text   $a	(overlay_10_022BCDF4.o)
   022BED8C 000002E4 .text   ov10_022BE44C	(overlay_10_022BCDF4.o)
@@ -28850,7 +28850,7 @@
   022BF0C0 00000220 .text   ov10_022BE780	(overlay_10_022BCDF4.o)
   022BF2D8 00000000 .text   $d	(overlay_10_022BCDF4.o)
   022BF2E0 00000000 .text   $a	(overlay_10_022BCDF4.o)
-  022BF2E0 00000048 .text   ov10_022BE9A0	(overlay_10_022BCDF4.o)
+  022BF2E0 00000048 .text   GetLiveEffectIdx	(overlay_10_022BCDF4.o)
   022BF324 00000000 .text   $d	(overlay_10_022BCDF4.o)
   022BF328 00000000 .text   $a	(overlay_10_022BCDF4.o)
   022BF328 00000144 .text   ov10_022BE9E8	(overlay_10_022BCDF4.o)
@@ -28889,7 +28889,7 @@
   022BFD84 00000018 .text   ov10_022BF444	(overlay_10_022BCDF4.o)
   022BFD9C 00000094 .text   ov10_022BF45C	(overlay_10_022BCDF4.o)
   022BFE28 00000000 .text   $d	(overlay_10_022BCDF4.o)
-  022BFE30 00000274 .text   ov10_022BF4F0	(overlay_10_022BCDF4.o)
+  022BFE30 00000274 .text   DisplayEffect	(overlay_10_022BCDF4.o)
   022BFE30 00000000 .text   $a	(overlay_10_022BCDF4.o)
   022C0098 00000000 .text   $d	(overlay_10_022BCDF4.o)
   022C00A4 00000070 .text   ov10_022BF764	(overlay_10_022BCDF4.o)
@@ -37319,7 +37319,7 @@
   022E6050 00000034 .text   PlaySeByIdIfShouldDisplayEntity	(overlay_29_022E5650.o)
   022E6084 00000020 .text   ov29_022E56D4	(overlay_29_022E5650.o)
   022E60A4 00000034 .text   ov29_022E56F4	(overlay_29_022E5650.o)
-  022E60D8 00000044 .text   ov29_022E5728	(overlay_29_022E5650.o)
+  022E60D8 00000044 .text   PlayItemThrowSfx	(overlay_29_022E5650.o)
   022E6110 00000000 .text   $d	(overlay_29_022E5650.o)
   022E611C 00000000 .text   $a	(overlay_29_022E5650.o)
   022E611C 00000034 .text   PlayMissSfx__022E611C	(overlay_29_022E5650.o)
@@ -37689,7 +37689,7 @@
   022EA41C 00000030 .text   ov29_022E9A6C	(overlay_29_022E9A44.o)
   022EA448 00000000 .text   $d	(overlay_29_022E9A44.o)
   022EA44C 00000000 .text   $a	(overlay_29_022E9A44.o)
-  022EA44C 0000021C .text   ov29_022E9A9C	(overlay_29_022E9A44.o)
+  022EA44C 0000021C .text   GetCurvedProjectileTargetPos	(overlay_29_022E9A44.o)
   022EA650 00000000 .text   $d	(overlay_29_022E9A44.o)
   022EA668 00000000 .text   $a	(overlay_29_022E9A44.o)
   022EA668 00000260 .text   ov29_022E9CB8	(overlay_29_022E9A44.o)
@@ -38315,11 +38315,11 @@
   022F6A10 000001B8 .text   UseRegularAttackOrStruggle	(overlay_29_022F59C4.o)
   022F6BB0 00000000 .text   $d	(overlay_29_022F59C4.o)
   022F6BC8 00000000 .text   $a	(overlay_29_022F59C4.o)
-  022F6BC8 00000098 .text   ov29_022F6210	(overlay_29_022F59C4.o)
+  022F6BC8 00000098 .text   GetShopkeeperIfTalkable	(overlay_29_022F59C4.o)
   022F6C5C 00000000 .text   $d	(overlay_29_022F59C4.o)
   022F6C60 00000024 .text   EntityIsValid__022F62A8	(overlay_29_022F62A8.o)
   022F6C60 00000000 .text   $a	(overlay_29_022F62A8.o)
-  022F6C84 00000440 .text   ov29_022F62CC	(overlay_29_022F62CC.o)
+  022F6C84 00000440 .text   HandleShopTransaction	(overlay_29_022F62CC.o)
   022F6C84 00001098 .text   .text	(overlay_29_022F62CC.o)
   022F6C84 00000000 .text   $a	(overlay_29_022F62CC.o)
   022F70B4 00000000 .text   $d	(overlay_29_022F62CC.o)
@@ -38333,10 +38333,10 @@
   022F7188 00000000 .text   $a	(overlay_29_022F62CC.o)
   022F73A4 00000000 .text   $d	(overlay_29_022F62CC.o)
   022F73C4 00000000 .text   $a	(overlay_29_022F62CC.o)
-  022F73C4 000002A0 .text   ov29_022F6A0C	(overlay_29_022F62CC.o)
+  022F73C4 000002A0 .text   TryBuyFromShop	(overlay_29_022F62CC.o)
   022F7644 00000000 .text   $d	(overlay_29_022F62CC.o)
   022F7664 00000000 .text   $a	(overlay_29_022F62CC.o)
-  022F7664 0000016C .text   ov29_022F6CAC	(overlay_29_022F62CC.o)
+  022F7664 0000016C .text   TriggerThiefAlert	(overlay_29_022F62CC.o)
   022F77C4 00000000 .text   $d	(overlay_29_022F62CC.o)
   022F77D0 00000000 .text   $a	(overlay_29_022F62CC.o)
   022F77D0 00000028 .text   ResetDamageData	(overlay_29_022F62CC.o)
@@ -38493,7 +38493,7 @@
   022FA674 0000000C .text   IsMonsterIdInNormalRangeVeneer	(overlay_29_022F9744.o)
   022FA67C 00000000 .text   $d	(overlay_29_022F9744.o)
   022FA680 00000000 .text   $a	(overlay_29_022F9744.o)
-  022FA680 0000022C .text   ov29_022F9C74	(overlay_29_022F9744.o)
+  022FA680 0000022C .text   ActivateTerrainEffects	(overlay_29_022F9744.o)
   022FA894 00000000 .text   $d	(overlay_29_022F9744.o)
   022FA8AC 0000018C .text   ov29_022F9EA0	(overlay_29_022F9744.o)
   022FA8AC 00000000 .text   $a	(overlay_29_022F9744.o)
@@ -38744,19 +38744,19 @@
   023000F0 00000000 .text   $a	(overlay_29_022FF6C4.o)
   023000F0 000000A0 .text   IsInvalidSpawnTile	(overlay_29_022FF6C4.o)
   023000F0 000001D4 .text   .text	(overlay_29_022FF6C4.o)
-  02300190 00000134 .text   ov29_022FF764	(overlay_29_022FF6C4.o)
+  02300190 00000134 .text   CannotMoveToTile	(overlay_29_022FF6C4.o)
   023002C4 00000030 .text   ItemIsActive__022FF898	(overlay_29_022FF898.o)
   023002C4 00000000 .text   $a	(overlay_29_022FF898.o)
   023002F4 00000040 .text   GetMobilityTypeAfterIqSkills	(overlay_29_022FF898.o)
   023002F4 00000000 .text   $a	(overlay_29_022FF898.o)
   02300334 00000050 .text   CanMoveThroughWalls	(dungeon_logic_8.o)
   02300334 00000000 .text   $a	(dungeon_logic_8.o)
-  02300384 0000013C .text   CannotStandOnTile__02300384	(overlay_29_022FF958.o)
+  02300384 0000013C .text   CannotStandOnTileNoMonsterCheck	(overlay_29_022FF958.o)
   02300384 000005D0 .text   .text	(overlay_29_022FF958.o)
   02300384 00000000 .text   $a	(overlay_29_022FF958.o)
   023004C0 000000FC .text   ov29_022FFA94	(overlay_29_022FF958.o)
   023005BC 0000010C .text   ov29_022FFB90	(overlay_29_022FF958.o)
-  023006C8 00000158 .text   CannotStandOnTile__023006C8	(overlay_29_022FF958.o)
+  023006C8 00000158 .text   CannotStandOnTile	(overlay_29_022FF958.o)
   02300820 00000134 .text   CalcSpeedStage	(overlay_29_022FF958.o)
   02300944 00000000 .text   $d	(overlay_29_022FF958.o)
   02300954 00000024 .text   ExclusiveItemEffectIsActive__022FFF28	(overlay_29_022FFF28.o)
@@ -38823,7 +38823,7 @@
   023013CC 000001A0 .text   .text	(overlay_29_023009A0.o)
   023013CC 0000002C .text   ov29_023009A0	(overlay_29_023009A0.o)
   023013CC 00000000 .text   $a	(overlay_29_023009A0.o)
-  023013F8 00000138 .text   ov29_023009CC	(overlay_29_023009A0.o)
+  023013F8 00000138 .text   CanBeTalkedTo	(overlay_29_023009A0.o)
   02301530 0000003C .text   HasStatusThatPreventsOutlawEscaping	(overlay_29_023009A0.o)
   0230156C 000000B8 .text   CheckVariousConditions__0230156C	(dungeon_capabilities_1.o)
   0230156C 00000000 .text   $a	(dungeon_capabilities_1.o)
@@ -39019,7 +39019,7 @@
   023053D4 00000000 .text   $a	(overlay_29_023047DC.o)
   023053D4 0000002C .text   ChangeMonsterAnimation	(overlay_29_023047DC.o)
   02305400 0000002C .text   ov29_023049D4	(overlay_29_023047DC.o)
-  0230542C 00000048 .text   ov29_02304A00	(overlay_29_023047DC.o)
+  0230542C 00000048 .text   MakeMonsterIdleInDirectionIfValid	(overlay_29_023047DC.o)
   02305474 0000003C .text   ChangeMonsterAnimationToIdle	(overlay_29_023047DC.o)
   023054B0 00000030 .text   ChangeMonsterAnimationToHurt	(overlay_29_023047DC.o)
   023054E0 00000048 .text   GetIdleAnimationId	(overlay_29_023047DC.o)
@@ -39934,11 +39934,11 @@
   023211F0 0000031C .text   TryAftermathExplosion	(overlay_29_02320788.o)
   023211F0 00000000 .text   $a	(overlay_29_02320788.o)
   023214F4 00000000 .text   $d	(overlay_29_02320788.o)
-  0232150C 00000128 .text   ov29_02320AA4	(overlay_29_02320788.o)
+  0232150C 00000128 .text   CalcExplosionDamage	(overlay_29_02320788.o)
   0232150C 00000000 .text   $a	(overlay_29_02320788.o)
   02321630 00000000 .text   $d	(overlay_29_02320788.o)
   02321634 00000000 .text   $a	(overlay_29_02320788.o)
-  02321634 0000013C .text   ov29_02320BCC	(overlay_29_02320788.o)
+  02321634 0000013C .text   CalcAftermathExplosionDamage	(overlay_29_02320788.o)
   0232176C 00000000 .text   $d	(overlay_29_02320788.o)
   02321770 000003FC .text   TryWarp	(overlay_29_02320788.o)
   02321770 00000000 .text   $a	(overlay_29_02320788.o)
@@ -42856,7 +42856,7 @@
   023541DC 00000000 .data   ov29_023535DC	(overlay_29_data_023534E0.o)
   023542FC 00000000 .data   AI_THROWN_ITEM_ACTION_CHOICE_COUNT	(overlay_29_data_02353700.o)
   023542FC 0000016C .data   .data	(overlay_29_data_02353700.o)
-  02354300 00000000 .data   ov29_02353700	(overlay_29_data_02353700.o)
+  02354300 00000000 .data   EXPLOSION_FIXED_DAMAGES	(overlay_29_data_02353700.o)
   0235430C 00000000 .data   ov29_0235370C	(overlay_29_data_02353700.o)
   02354310 00000000 .data   EXCL_ITEM_EFFECTS_EVASION_BOOST	(overlay_29_data_02353700.o)
   02354318 00000000 .data   ov29_02353718	(overlay_29_data_02353700.o)
@@ -43080,15 +43080,15 @@
   02386714 00000000 .text   $a	(overlay_30_init.o)
   02386714 0000012C .text   ov30_02385B10	(overlay_30_init.o)
   0238683C 00000000 .text   $d	(overlay_30_init.o)
-  02386840 00000018 .text   ov30_02385C3C	(overlay_30_init.o)
+  02386840 00000018 .text   InitDataSerializerWriter	(overlay_30_init.o)
   02386840 00000000 .text   $a	(overlay_30_init.o)
-  02386858 00000038 .text   ov30_02385C54	(overlay_30_init.o)
+  02386858 00000038 .text   WriteBitsToDataSerializer	(overlay_30_init.o)
   02386858 00000000 .text   $a	(overlay_30_init.o)
-  02386890 00000018 .text   ov30_02385C8C	(overlay_30_init.o)
+  02386890 00000018 .text   InitDataSerializerReader	(overlay_30_init.o)
   02386890 00000000 .text   $a	(overlay_30_init.o)
-  023868A8 00000038 .text   ov30_02385CA4	(overlay_30_init.o)
+  023868A8 00000038 .text   ReadBitsFromDataSerializer	(overlay_30_init.o)
   023868A8 00000000 .text   $a	(overlay_30_init.o)
-  023868E0 00000004 .text   FinishBitSerializer	(overlay_30_init.o)
+  023868E0 00000004 .text   FinishDataSerializer	(overlay_30_init.o)
   023868E0 00000000 .text   $a	(overlay_30_init.o)
   023868E4 00000000 .text   $a	(overlay_30_init.o)
   023868E4 00000010 .text   ov30_02385CE0	(overlay_30_init.o)
@@ -43203,7 +43203,7 @@
   02383BBC 0000036C .text   .text	(overlay_31_02382FBC.o)
   02383E18 00000000 .text   $d	(overlay_31_02382FBC.o)
   02383E48 00000000 .text   $a	(overlay_31_02382FBC.o)
-  02383E48 00000044 .text   ov31_02383248	(overlay_31_02382FBC.o)
+  02383E48 00000044 .text   StairsDescriptionCallback	(overlay_31_02382FBC.o)
   02383E84 00000000 .text   $d	(overlay_31_02382FBC.o)
   02383E8C 00000064 .text   CloseMainStairsMenu	(overlay_31_02382FBC.o)
   02383E8C 00000000 .text   $a	(overlay_31_02382FBC.o)
@@ -43794,5 +43794,5 @@
   00000000 00000000 00004000 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Sat Sep 05 03:57:17 2026
-# Link end time: Sat Sep 05 03:57:18 2026
+# Link start time: Mon Sep 07 16:43:01 2026
+# Link end time: Mon Sep 07 16:43:02 2026
