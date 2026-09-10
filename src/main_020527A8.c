@@ -22,15 +22,11 @@ u8 GetSpriteSize(s16 monster_id)
     if (size <= 6) {
         return 6;
     }
-    // NOTE: reload through raw (not size) is load-bearing for an exact
-    // match: reusing size lets the compiler fold both loads into one.
     return MONSTER_SPRITE_DATA[raw].sprite_size;
 }
 
 u32 GetSpriteFileSize(s16 monster_id)
 {
     s32 raw = monster_id % 600;
-    // NOTE: u32 return (not u8 as in pmdsky-debug): no truncation is
-    // emitted and callers accumulate the full value (field << 9).
     return MONSTER_SPRITE_DATA[raw].sprite_file_size << 9;
 }
