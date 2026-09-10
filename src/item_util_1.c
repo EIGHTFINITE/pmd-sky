@@ -230,3 +230,12 @@ bool8 IsItemValidVeneer(s16 item_id)
 {
     return IsItemValid(item_id);
 }
+
+s32 sub_0200EB64(s16 idx)
+{
+    u32 shift = (u32)idx << 31;
+    s32 *table = ITEM_DATA_TABLE_PTRS.langFile.iov_base;
+    s32 entry_index = idx >> 1;
+    s32 entry = table[entry_index];
+    return 0x7FF & (entry >> (shift >> 27));
+}
