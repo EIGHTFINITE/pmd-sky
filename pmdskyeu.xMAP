@@ -1,6 +1,5 @@
 
 # Unreferenced symbols:
-	(main_02008240.o )	[whole file]
 	.bss	(poly_text.o )
 	unk1962a	(poly_text.o )
 	(overlay_29_022FED98.o )	[whole file]
@@ -231,7 +230,7 @@
                      20](CopyAndInterleave,func) found in global itcm.o
                       21](GetAllBaseForms,func) found in global main_02052B44.o
                       21](UpdateWindow,func) found in global main_02027AF0.o
-                      21](sub_0202760C,func) found in global main_0202760C.o
+                      21](sub_0202760C,func) found in global main_020275F8.o
                       21](GetWindow,func) found in global main_020275F8.o
                       21](_02099E44,notype) found in global main_rodata_020925A0.o
                       21](G3_MultMtx43,func) found in global g3imm.o
@@ -257,7 +256,7 @@
                          24](RandRangeSafe,func) found in global main_020022C4.o
                         23](GetItemActionName,func) found in global item_util_1.o
                         23](GetItemPaletteId,func) found in global item_util_1.o
-                        23](sub_0200EB64,func) found in global main_0200EB30.o
+                        23](sub_0200EB64,func) found in global item_util_1.o
                        22](strcat,func) found in global main_020897AC.o
                        22](GetActiveTeamMember,func) found in global main_020562B8.o
                        22](sub_0204E530,func) found in global main_0204DE7C.o
@@ -1246,7 +1245,7 @@
                                                                                                                                                142](ResetDamageData,func) found in global overlay_29_022F62CC.o
                                                                                                                                                 143](LoadMonsterSprite,func) found in global overlay_29_022F7654.o
                                                                                                                                                  144](LoadMonsterSpriteInner,func) found in global overlay_29_022F740C.o
-                                                                                                                                                  145](GetSpriteFileSize,func) found in global main_020527E0.o
+                                                                                                                                                  145](GetSpriteFileSize,func) found in global main_020527A8.o
                                                                                                                                                   145](GetSpriteIndex__020526EC,func) found in global main_020526EC.o
                                                                                                                                                   145](GendersEqualNotGenderless,func) found in global main_02054DC4.o
                                                                                                                                                 143](LoadMissionMonsterSprites,func) found in global overlay_29_02349378.o
@@ -1380,6 +1379,7 @@
                                                                                                                                                  144](DoMoveStayAway,func) found in global overlay_29_0232C560.o
                                                                                                                                                  144](DoMoveTransfer,func) found in global overlay_29_0232C84C.o
                                                                                                                                                   145](ov29_022E1AAC,func) found in global dg_object.o
+                                                                                                                                                   146](GetSpriteSize,func) found in global main_020527A8.o
                                                                                                                                                   145](FixedRoomIsSubstituteRoom,func) found in global run_dungeon_1.o
                                                                                                                                                  144](DoMoveSplash,func) found in global overlay_29_0232A524.o
                                                                                                                                                  144](DoMoveExpose,func) found in global overlay_29_02326E04.o
@@ -1843,7 +1843,7 @@
                                                                                                                                         135](DecrementEggHatchTimer,func) found in global main_020107DC.o
                                                                                                                                         135](GenerateKecleonItems2,func) found in global main_02010BC0.o
                                                                                                                                          136](RemoveItemFromKecleonShop2,func) found in global main_020108B4.o
-                                                                                                                                          137](RemoveItemFromKecleonShop1,func) found in global main_02010830.o
+                                                                                                                                          137](RemoveItemFromKecleonShop1,func) found in global main_020107DC.o
                                                                                                                                         135](ov11_022F5B70,func) found in global overlay_11_022EE5E4.o
                                                                                                                                         135](ov11_022EA0BC,func) found in global overlay_11_022EA024.o
                                                                                                                                         135](sub_0201BF64,func) found in global main_0201BCCC.o
@@ -2226,7 +2226,7 @@
                                                                                 79](GetShadowSize,func) found in global main_0205283C.o
                                                                             75](EntityIsValid__022E32E8,func) found in global dg_camera.o
                                                                             75](ItemIsActive__022E330C,func) found in global dg_camera.o
-                                                                            75](PrepareItemForPrinting2,func) found in global overlay_29_02344BA8.o
+                                                                            75](PrepareItemForPrinting2,func) found in global overlay_29_02344B9C.o
                                                                        70](GetStatBoostsForMonsterSummary,func) found in global main_0205A430.o
                                                                        70](JoinedAtRangeCheck,func) found in global dungeon_recruitment_2.o
                                                                        70](ov29_02349688,func) found in global overlay_29_02349688.o
@@ -2297,7 +2297,7 @@
                                                                       69](ov30_02385EB8,func) found in global overlay_30_init.o
                                                                       69](ov30_02385D94,func) found in global overlay_30_init.o
                                                                 63](ov29_0234BB44,func) found in global overlay_29_0234BA54.o
-                                                              61](FixedPoint64ToInt,func) found in global main_02001CB0.o
+                                                              61](FixedPoint64ToInt,func) found in global main_02001BB4.o
                                                               61](IntToFixedPoint64,func) found in global main_02001BB4.o
                                                               61](CalcTypeBasedDamageEffects,func) found in global overlay_29_0230AD04.o
                                                                62](FixedPoint32To64,func) found in global main_02001CD4.o
@@ -2454,6 +2454,7 @@
                                                   49](.rodata,section) found in local overlay_22.o
                                                   49](GetCurrentKecleonShop2ItemByIndex,func) found in global main_02010BA4.o
                                                   49](GetCurrentKecleonShop1ItemByIndex,func) found in global main_02010898.o
+                                                  49](RemoveInvalidKecleonShop1Items,func) found in global main_020107DC.o
                                                  48](SwapShopMainManager,func) found in global overlay_21.o
                                                   49](.rodata,section) found in local overlay_21.o
                                                   49](.data,section) found in local overlay_21.o
@@ -3042,9 +3043,8 @@
   02001BB4 00000000 .text   $a	(main_02001BB4.o)
   02001C80 00000030 .text   IntToFixedPoint64	(main_02001BB4.o)
   02001C80 00000000 .text   $a	(main_02001BB4.o)
-  02001CB0 00000024 .text   .text	(main_02001CB0.o)
-  02001CB0 00000024 .text   FixedPoint64ToInt	(main_02001CB0.o)
-  02001CB0 00000000 .text   $a	(main_02001CB0.o)
+  02001CB0 00000024 .text   FixedPoint64ToInt	(main_02001BB4.o)
+  02001CB0 00000000 .text   $a	(main_02001BB4.o)
   02001CD4 00000024 .text   FixedPoint32To64	(main_02001CD4.o)
   02001CD4 00000000 .text   $a	(main_02001CD4.o)
   02001CF8 00000030 .text   NegateFixedPoint64	(main_02001CD4.o)
@@ -4186,10 +4186,9 @@
   0200EC00 00000000 .text   $a	(item_util_1.o)
   0200EC00 0000000C .text   IsItemValidVeneer	(item_util_1.o)
   0200EC08 00000000 .text   $d	(item_util_1.o)
-  0200EC0C 00000000 .text   $a	(main_0200EB30.o)
-  0200EC0C 0000002C .text   .text	(main_0200EB30.o)
-  0200EC0C 0000002C .text   sub_0200EB64	(main_0200EB30.o)
-  0200EC30 00000000 .text   $d	(main_0200EB30.o)
+  0200EC0C 00000000 .text   $a	(item_util_1.o)
+  0200EC0C 0000002C .text   sub_0200EB64	(item_util_1.o)
+  0200EC30 00000000 .text   $d	(item_util_1.o)
   0200EC38 00000000 .text   $a	(main_0200ECFC.o)
   0200EC38 0000003C .text   ReturnEggExclusiveItem	(main_0200ECFC.o)
   0200EC70 00000000 .text   $d	(main_0200ECFC.o)
@@ -4450,13 +4449,12 @@
   020108B4 00000000 .text   $a	(main_020107DC.o)
   020108B4 00000024 .text   DecrementEggHatchTimer	(main_020107DC.o)
   020108D4 00000000 .text   $d	(main_020107DC.o)
-  020108D8 00000068 .text   .text	(main_02010830.o)
-  020108D8 0000003C .text   RemoveInvalidKecleonShop1Items	(main_02010830.o)
-  020108D8 00000000 .text   $a	(main_02010830.o)
-  02010910 00000000 .text   $d	(main_02010830.o)
-  02010914 00000000 .text   $a	(main_02010830.o)
-  02010914 0000002C .text   RemoveItemFromKecleonShop1	(main_02010830.o)
-  0201093C 00000000 .text   $d	(main_02010830.o)
+  020108D8 00000000 .text   $a	(main_020107DC.o)
+  020108D8 0000003C .text   RemoveInvalidKecleonShop1Items	(main_020107DC.o)
+  02010910 00000000 .text   $d	(main_020107DC.o)
+  02010914 00000000 .text   $a	(main_020107DC.o)
+  02010914 0000002C .text   RemoveItemFromKecleonShop1	(main_020107DC.o)
+  0201093C 00000000 .text   $d	(main_020107DC.o)
   02010940 00000000 .text   $a	(main_02010898.o)
   02010940 0000001C .text   GetCurrentKecleonShop1ItemByIndex	(main_02010898.o)
   02010958 00000000 .text   $d	(main_02010898.o)
@@ -6122,10 +6120,9 @@
   020278EC 00000000 .text   $a	(main_020275F8.o)
   020278EC 00000014 .text   GetWindow	(main_020275F8.o)
   020278FC 00000000 .text   $d	(main_020275F8.o)
-  02027900 00000000 .text   $a	(main_0202760C.o)
-  02027900 00000018 .text   .text	(main_0202760C.o)
-  02027900 00000018 .text   sub_0202760C	(main_0202760C.o)
-  02027914 00000000 .text   $d	(main_0202760C.o)
+  02027900 00000000 .text   $a	(main_020275F8.o)
+  02027900 00000018 .text   sub_0202760C	(main_020275F8.o)
+  02027914 00000000 .text   $d	(main_020275F8.o)
   02027918 00000000 .text   $a	(main_02027648.o)
   02027918 00000024 .text   sub_02027624	(main_02027648.o)
   02027938 00000000 .text   $d	(main_02027648.o)
@@ -8986,13 +8983,12 @@
   02052AFC 00000000 .text   $a	(main_020527A8.o)
   02052AFC 0000001C .text   GetBodySize	(main_020527A8.o)
   02052B14 00000000 .text   $d	(main_020527A8.o)
-  02052B18 0000005C .text   .text	(main_020527E0.o)
-  02052B18 0000003C .text   GetSpriteSize	(main_020527E0.o)
-  02052B18 00000000 .text   $a	(main_020527E0.o)
-  02052B50 00000000 .text   $d	(main_020527E0.o)
-  02052B54 00000000 .text   $a	(main_020527E0.o)
-  02052B54 00000020 .text   GetSpriteFileSize	(main_020527E0.o)
-  02052B70 00000000 .text   $d	(main_020527E0.o)
+  02052B18 00000000 .text   $a	(main_020527A8.o)
+  02052B18 0000003C .text   GetSpriteSize	(main_020527A8.o)
+  02052B50 00000000 .text   $d	(main_020527A8.o)
+  02052B54 00000000 .text   $a	(main_020527A8.o)
+  02052B54 00000020 .text   GetSpriteFileSize	(main_020527A8.o)
+  02052B70 00000000 .text   $d	(main_020527A8.o)
   02052B74 00000000 .text   $a	(main_0205283C.o)
   02052B74 0000001C .text   GetShadowSize	(main_0205283C.o)
   02052B8C 00000000 .text   $d	(main_0205283C.o)
@@ -41644,10 +41640,9 @@
   02345780 00000000 .text   $a	(overlay_29_02344B9C.o)
   02345780 0000000C .text   ov29_02344B9C	(overlay_29_02344B9C.o)
   02345788 00000000 .text   $d	(overlay_29_02344B9C.o)
-  0234578C 00000000 .text   $a	(overlay_29_02344BA8.o)
-  0234578C 00000028 .text   .text	(overlay_29_02344BA8.o)
-  0234578C 00000028 .text   PrepareItemForPrinting2	(overlay_29_02344BA8.o)
-  023457B0 00000000 .text   $d	(overlay_29_02344BA8.o)
+  0234578C 00000000 .text   $a	(overlay_29_02344B9C.o)
+  0234578C 00000028 .text   PrepareItemForPrinting2	(overlay_29_02344B9C.o)
+  023457B0 00000000 .text   $d	(overlay_29_02344B9C.o)
   023457B4 00000000 .text   $a	(overlay_29_02344BE4.o)
   023457B4 00000014 .text   GenerateStandardItem	(overlay_29_02344BE4.o)
   023457C4 00000000 .text   $d	(overlay_29_02344BE4.o)
@@ -43794,5 +43789,5 @@
   00000000 00000000 00004000 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Mon Sep 07 16:43:01 2026
-# Link end time: Mon Sep 07 16:43:02 2026
+# Link start time: Thu Sep 10 23:36:47 2026
+# Link end time: Thu Sep 10 23:36:48 2026

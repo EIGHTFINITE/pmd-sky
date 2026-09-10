@@ -1,6 +1,5 @@
 
 # Unreferenced symbols:
-	(main_02008240.o )	[whole file]
 	.bss	(poly_text.o )
 	unk1962a	(poly_text.o )
 	(overlay_29_022FEEB8_eu.o )	[whole file]
@@ -231,7 +230,7 @@
                      20](CopyAndInterleave,func) found in global itcm.o
                       21](GetAllBaseForms,func) found in global main_02052B44.o
                       21](UpdateWindow,func) found in global main_02027AF0.o
-                      21](sub_0202760C,func) found in global main_0202760C.o
+                      21](sub_0202760C,func) found in global main_020275F8.o
                       21](GetWindow,func) found in global main_020275F8.o
                       21](_02099E44,notype) found in global main_rodata_020925A0.o
                       21](G3_MultMtx43,func) found in global g3imm.o
@@ -257,7 +256,7 @@
                          24](RandRangeSafe,func) found in global main_020022C4.o
                         23](GetItemActionName,func) found in global item_util_1.o
                         23](GetItemPaletteId,func) found in global item_util_1.o
-                        23](sub_0200EB64,func) found in global main_0200EB30.o
+                        23](sub_0200EB64,func) found in global item_util_1.o
                        22](strcat,func) found in global main_020897AC.o
                        22](GetActiveTeamMember,func) found in global main_020562B8.o
                        22](sub_0204E530,func) found in global main_0204DE7C.o
@@ -966,7 +965,7 @@
                                                                                                                            122](DecrementEggHatchTimer,func) found in global main_020107DC.o
                                                                                                                            122](GenerateKecleonItems2,func) found in global main_02010BC0.o
                                                                                                                             123](RemoveItemFromKecleonShop2,func) found in global main_020108B4.o
-                                                                                                                             124](RemoveItemFromKecleonShop1,func) found in global main_02010830.o
+                                                                                                                             124](RemoveItemFromKecleonShop1,func) found in global main_020107DC.o
                                                                                                                            122](ZeroInitScriptVariable,func) found in global script_variable.o
                                                                                                                            122](ov11_022F5B70,func) found in global overlay_11_022EE5E4.o
                                                                                                                            122](ov11_022EA0BC,func) found in global overlay_11_022EA024.o
@@ -1418,7 +1417,7 @@
                                                                                                                               125](LowerSpeed,func) found in global move_orb_effects.o
                                                                                                                                126](PlaySpeedDownEffect,func) found in global overlay_29_022E4338.o
                                                                                                                              124](ov29_022E1AAC,func) found in global dg_object.o
-                                                                                                                              125](GetSpriteSize,func) found in global main_020527E0.o
+                                                                                                                              125](GetSpriteSize,func) found in global main_020527A8.o
                                                                                                                              124](AddHeldItemToBag,func) found in global overlay_29_02346834.o
                                                                                                                               125](PrepareItemForPrinting__02345754,func) found in global overlay_29_02344AF8.o
                                                                                                                               125](SpawnDroppedItem,func) found in global overlay_29_023456BC.o
@@ -1558,6 +1557,7 @@
                                                                                                                                           137](HandleShopTransaction,func) found in global overlay_29_022F62CC.o
                                                                                                                                            138](LoadMonsterSprite,func) found in global overlay_29_022F7654.o
                                                                                                                                             139](LoadMonsterSpriteInner,func) found in global overlay_29_022F740C.o
+                                                                                                                                             140](GetSpriteFileSize,func) found in global main_020527A8.o
                                                                                                                                              140](GendersEqualNotGenderless,func) found in global main_02054DC4.o
                                                                                                                                            138](LoadMissionMonsterSprites,func) found in global overlay_29_02349378.o
                                                                                                                                            138](IsCherrim,func) found in global main_02054AA4.o
@@ -2226,7 +2226,7 @@
                                                                                 79](GetShadowSize,func) found in global main_0205283C.o
                                                                             75](EntityIsValid__022E32E8,func) found in global dg_camera.o
                                                                             75](ItemIsActive__022E330C,func) found in global dg_camera.o
-                                                                            75](PrepareItemForPrinting2,func) found in global overlay_29_02344BA8.o
+                                                                            75](PrepareItemForPrinting2,func) found in global overlay_29_02344B9C.o
                                                                        70](GetStatBoostsForMonsterSummary,func) found in global main_0205A430.o
                                                                        70](JoinedAtRangeCheck,func) found in global dungeon_recruitment_2.o
                                                                        70](ov29_02349688,func) found in global overlay_29_02349688.o
@@ -2296,7 +2296,7 @@
                                                                       69](ov30_02385EB8,func) found in global overlay_30_init.o
                                                                       69](ov30_02385D94,func) found in global overlay_30_init.o
                                                                 63](ov29_0234BB44,func) found in global overlay_29_0234BA54.o
-                                                              61](FixedPoint64ToInt,func) found in global main_02001CB0.o
+                                                              61](FixedPoint64ToInt,func) found in global main_02001BB4.o
                                                               61](IntToFixedPoint64,func) found in global main_02001BB4.o
                                                               61](CalcTypeBasedDamageEffects,func) found in global overlay_29_0230AD04.o
                                                                62](FixedPoint32To64,func) found in global main_02001CD4.o
@@ -2453,6 +2453,7 @@
                                                   49](.rodata,section) found in local overlay_22.o
                                                   49](GetCurrentKecleonShop2ItemByIndex,func) found in global main_02010BA4.o
                                                   49](GetCurrentKecleonShop1ItemByIndex,func) found in global main_02010898.o
+                                                  49](RemoveInvalidKecleonShop1Items,func) found in global main_020107DC.o
                                                  48](SwapShopMainManager,func) found in global overlay_21.o
                                                   49](.rodata,section) found in local overlay_21.o
                                                   49](.data,section) found in local overlay_21.o
@@ -3041,9 +3042,8 @@
   02001BB4 00000000 .text   $a	(main_02001BB4.o)
   02001C80 00000030 .text   IntToFixedPoint64	(main_02001BB4.o)
   02001C80 00000000 .text   $a	(main_02001BB4.o)
-  02001CB0 00000024 .text   .text	(main_02001CB0.o)
-  02001CB0 00000024 .text   FixedPoint64ToInt	(main_02001CB0.o)
-  02001CB0 00000000 .text   $a	(main_02001CB0.o)
+  02001CB0 00000024 .text   FixedPoint64ToInt	(main_02001BB4.o)
+  02001CB0 00000000 .text   $a	(main_02001BB4.o)
   02001CD4 00000024 .text   FixedPoint32To64	(main_02001CD4.o)
   02001CD4 00000000 .text   $a	(main_02001CD4.o)
   02001CF8 00000030 .text   NegateFixedPoint64	(main_02001CD4.o)
@@ -4183,10 +4183,9 @@
   0200EB58 00000000 .text   $a	(item_util_1.o)
   0200EB58 0000000C .text   IsItemValidVeneer	(item_util_1.o)
   0200EB60 00000000 .text   $d	(item_util_1.o)
-  0200EB64 00000000 .text   $a	(main_0200EB30.o)
-  0200EB64 0000002C .text   .text	(main_0200EB30.o)
-  0200EB64 0000002C .text   sub_0200EB64	(main_0200EB30.o)
-  0200EB88 00000000 .text   $d	(main_0200EB30.o)
+  0200EB64 00000000 .text   $a	(item_util_1.o)
+  0200EB64 0000002C .text   sub_0200EB64	(item_util_1.o)
+  0200EB88 00000000 .text   $d	(item_util_1.o)
   0200EB90 00000000 .text   $a	(main_0200ECFC.o)
   0200EB90 0000003C .text   ReturnEggExclusiveItem	(main_0200ECFC.o)
   0200EBC8 00000000 .text   $d	(main_0200ECFC.o)
@@ -4447,13 +4446,12 @@
   0201080C 00000000 .text   $a	(main_020107DC.o)
   0201080C 00000024 .text   DecrementEggHatchTimer	(main_020107DC.o)
   0201082C 00000000 .text   $d	(main_020107DC.o)
-  02010830 00000068 .text   .text	(main_02010830.o)
-  02010830 0000003C .text   RemoveInvalidKecleonShop1Items	(main_02010830.o)
-  02010830 00000000 .text   $a	(main_02010830.o)
-  02010868 00000000 .text   $d	(main_02010830.o)
-  0201086C 00000000 .text   $a	(main_02010830.o)
-  0201086C 0000002C .text   RemoveItemFromKecleonShop1	(main_02010830.o)
-  02010894 00000000 .text   $d	(main_02010830.o)
+  02010830 00000000 .text   $a	(main_020107DC.o)
+  02010830 0000003C .text   RemoveInvalidKecleonShop1Items	(main_020107DC.o)
+  02010868 00000000 .text   $d	(main_020107DC.o)
+  0201086C 00000000 .text   $a	(main_020107DC.o)
+  0201086C 0000002C .text   RemoveItemFromKecleonShop1	(main_020107DC.o)
+  02010894 00000000 .text   $d	(main_020107DC.o)
   02010898 00000000 .text   $a	(main_02010898.o)
   02010898 0000001C .text   GetCurrentKecleonShop1ItemByIndex	(main_02010898.o)
   020108B0 00000000 .text   $d	(main_02010898.o)
@@ -6102,10 +6100,9 @@
   020275F8 00000000 .text   $a	(main_020275F8.o)
   020275F8 00000014 .text   GetWindow	(main_020275F8.o)
   02027608 00000000 .text   $d	(main_020275F8.o)
-  0202760C 00000000 .text   $a	(main_0202760C.o)
-  0202760C 00000018 .text   .text	(main_0202760C.o)
-  0202760C 00000018 .text   sub_0202760C	(main_0202760C.o)
-  02027620 00000000 .text   $d	(main_0202760C.o)
+  0202760C 00000000 .text   $a	(main_020275F8.o)
+  0202760C 00000018 .text   sub_0202760C	(main_020275F8.o)
+  02027620 00000000 .text   $d	(main_020275F8.o)
   02027624 00000000 .text   $a	(main_02027648.o)
   02027624 00000024 .text   sub_02027624	(main_02027648.o)
   02027644 00000000 .text   $d	(main_02027648.o)
@@ -8966,13 +8963,12 @@
   020527C4 00000000 .text   $a	(main_020527A8.o)
   020527C4 0000001C .text   GetBodySize	(main_020527A8.o)
   020527DC 00000000 .text   $d	(main_020527A8.o)
-  020527E0 0000005C .text   .text	(main_020527E0.o)
-  020527E0 0000003C .text   GetSpriteSize	(main_020527E0.o)
-  020527E0 00000000 .text   $a	(main_020527E0.o)
-  02052818 00000000 .text   $d	(main_020527E0.o)
-  0205281C 00000000 .text   $a	(main_020527E0.o)
-  0205281C 00000020 .text   GetSpriteFileSize	(main_020527E0.o)
-  02052838 00000000 .text   $d	(main_020527E0.o)
+  020527E0 00000000 .text   $a	(main_020527A8.o)
+  020527E0 0000003C .text   GetSpriteSize	(main_020527A8.o)
+  02052818 00000000 .text   $d	(main_020527A8.o)
+  0205281C 00000000 .text   $a	(main_020527A8.o)
+  0205281C 00000020 .text   GetSpriteFileSize	(main_020527A8.o)
+  02052838 00000000 .text   $d	(main_020527A8.o)
   0205283C 00000000 .text   $a	(main_0205283C.o)
   0205283C 0000001C .text   GetShadowSize	(main_0205283C.o)
   02052854 00000000 .text   $d	(main_0205283C.o)
@@ -41603,10 +41599,9 @@
   02344B9C 00000000 .text   $a	(overlay_29_02344B9C.o)
   02344B9C 0000000C .text   ov29_02344B9C	(overlay_29_02344B9C.o)
   02344BA4 00000000 .text   $d	(overlay_29_02344B9C.o)
-  02344BA8 00000000 .text   $a	(overlay_29_02344BA8.o)
-  02344BA8 00000028 .text   .text	(overlay_29_02344BA8.o)
-  02344BA8 00000028 .text   PrepareItemForPrinting2	(overlay_29_02344BA8.o)
-  02344BCC 00000000 .text   $d	(overlay_29_02344BA8.o)
+  02344BA8 00000000 .text   $a	(overlay_29_02344B9C.o)
+  02344BA8 00000028 .text   PrepareItemForPrinting2	(overlay_29_02344B9C.o)
+  02344BCC 00000000 .text   $d	(overlay_29_02344B9C.o)
   02344BD0 00000000 .text   $a	(overlay_29_02344BE4.o)
   02344BD0 00000014 .text   GenerateStandardItem	(overlay_29_02344BE4.o)
   02344BE0 00000000 .text   $d	(overlay_29_02344BE4.o)
@@ -43758,5 +43753,5 @@
   00000000 00000000 00004000 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Mon Sep 07 16:40:24 2026
-# Link end time: Mon Sep 07 16:40:25 2026
+# Link start time: Thu Sep 10 23:33:28 2026
+# Link end time: Thu Sep 10 23:33:29 2026
