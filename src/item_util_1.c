@@ -230,3 +230,16 @@ bool8 IsItemValidVeneer(s16 item_id)
 {
     return IsItemValid(item_id);
 }
+
+// NOTE: the s32 return (not s16) and the explicit lsl/lsr shifts are
+// load-bearing for an exact match: s16 return emits lsl/asr #16, and
+// (idx & 1) << 4 does not produce the mov/lsl + mov/lsr pair.
+// Semantics unchanged (11-bit field, 0..0x7FF).
+s32 sub_0200EB64(s16 idx)
+{
+    u32 shift = (u32)idx << 31;
+    s32 *table = ITEM_DATA_TABLE_PTRS.langFile.iov_base;
+    s32 entry_index = idx >> 1;
+    s32 entry = table[entry_index];
+    return 0x7FF & (entry >> (shift >> 27));
+}

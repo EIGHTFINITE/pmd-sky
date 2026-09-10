@@ -3,5 +3,9 @@
 
 #include "window.h"
 
+u32 sub_0202760C(s32 idx);
+#ifdef JAPAN
+u32 sub_0202796C_JP(s32 idx);
+#endif
 
 #endif

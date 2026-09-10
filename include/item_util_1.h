@@ -42,6 +42,6 @@ bool8 TestItemAiFlag(s16 item_id, s32 flag);
 
 bool8 IsItemInTimeDarkness(s16 item_id);
 bool8 IsItemValidVeneer(s16 item_id);
-
+s32 sub_0200EB64(s16 idx);
 
 #endif //PMDSKY_ITEM_UTIL_1_H

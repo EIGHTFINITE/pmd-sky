@@ -69,3 +69,23 @@ void IntToFixedPoint64(struct fixed_point_64* out, s32 x)
         out->upper = out->upper | ~0xFFFF;
     }
 }
+
+s32 FixedPoint64ToInt(struct fixed_point_64 *x)
+{
+    u32 lower;
+    s32 upper;
+    u32 mask;
+    s64 shifted;
+    u32 masked;
+    s32 result;
+    mask = ~0xFFFFu;
+    upper = x->upper;
+    lower = x->lower;
+    shifted = upper * 0x10000;
+    masked = lower & mask;
+    result = shifted | (masked >> 16);
+    if (lower & 0x8000u) {
+        result += 1;
+    }
+    return result;
+}
